@@ -1,11 +1,30 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import MyContainer from "../MyContainer/MyContainer";
 import { Link } from "react-router";
 import useTheme from "../../Hooks/useTheme";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
+import useAuth from "./../../Hooks/useAuth";
+import { CgLogOut } from "react-icons/cg";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  //
   const { isDark, toggleTheme } = useTheme();
+  //
+  const { user, loading, LogoutUser } = useAuth();
+  const navigate = useNavigate();
+
+  // handle logOut user
+  const handleLogoutUser = () => {
+    LogoutUser()
+      .then(() => {
+        toast.success("Logout Successfully");
+        navigate("/auth/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const Links = (
     <>
@@ -13,8 +32,8 @@ const Navbar = () => {
         to="/"
         className={({ isActive }) =>
           isActive
-            ? "text-blue-600 font-semibold underline"
-            : "text-gray-700 hover:text-blue-500"
+            ? "text-orange-500 font-semibold underline"
+            : " hover:text-orange-400"
         }
       >
         Home
@@ -24,8 +43,8 @@ const Navbar = () => {
         to="/service"
         className={({ isActive }) =>
           isActive
-            ? "text-blue-600 font-semibold underline"
-            : "text-gray-700 hover:text-blue-500"
+            ? "text-orange-500 font-semibold underline"
+            : " hover:text-orange-400"
         }
       >
         Services
@@ -35,8 +54,8 @@ const Navbar = () => {
         to="/blogs"
         className={({ isActive }) =>
           isActive
-            ? "text-blue-600 font-semibold underline"
-            : "text-gray-700 hover:text-blue-500"
+            ? "text-orange-500 font-semibold underline"
+            : " hover:text-orange-400"
         }
       >
         Blogs
@@ -46,8 +65,8 @@ const Navbar = () => {
         to="/contact"
         className={({ isActive }) =>
           isActive
-            ? "text-blue-600 font-semibold underline"
-            : "text-gray-700 hover:text-blue-500"
+            ? "text-orange-500 font-semibold underline"
+            : " hover:text-orange-400"
         }
       >
         Contact Us
@@ -59,7 +78,7 @@ const Navbar = () => {
   return (
     <div
       className={`shadow-sm ${
-        isDark ? "bg-gray-900 text-white" : "bg-white text-black"
+        isDark ? "bg-gray-600 text-white" : " text-black"
       }`}
     >
       <MyContainer>
@@ -94,20 +113,72 @@ const Navbar = () => {
                 {Links}
               </ul>
             </div>
-            <Link to="/" className="btn btn-ghost text-xl">
+            <Link to="/" className="btn btn-ghost text-xl hidden md:flex">
               Assignment-11
             </Link>
           </div>
           <div className="navbar-center hidden md:flex">
-            <ul className="menu menu-horizontal px-1 flex gap-4 md:font-medium lg:text-[16px]">
+            <ul
+              className={`menu menu-horizontal px-1 flex gap-4 md:font-medium lg:text-[16px]
+              }`}
+            >
               {Links}
             </ul>
           </div>
           <div className="navbar-end">
-            <Link className="btn">Login</Link>
-            <div className="ml-4">
+            {/* Navbar end */}
+            {loading ? (
+              <span className="loading loading-spinner text-success"></span>
+            ) : user ? (
+              <div className="dropdown dropdown-end">
+                <div tabIndex={0} role="button">
+                  <div className="h-12 w-12 rounded-full overflow-hidden border cursor-pointer">
+                    <img
+                      src={user?.photoURL}
+                      alt="Profile"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+                <ul
+                  tabIndex="-1"
+                  className="dropdown-content menu bg-gray-500 rounded-box z-1 w-52 p-2 shadow-sm mt-2 text-white"
+                >
+                  <div className="mx-auto pt-4">
+                    <div className="h-12 w-12 rounded-full overflow-hidden border cursor-pointer">
+                      <img
+                        src={user?.photoURL}
+                        alt="Profile"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div className="pt-2">
+                    <p className="text-center font-medium">
+                      Name: {user?.displayName}
+                    </p>
+                  </div>
+
+                  <li className="px-6">
+                    <button
+                      onClick={handleLogoutUser}
+                      className="bg-gray-800 my-3 font-bold flex items-center justify-center gap-2 w-full text-white py-2 rounded"
+                    >
+                      LogOut <CgLogOut size={20} />
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <Link to="/auth/login" className="btn">
+                Login
+              </Link>
+            )}
+
+            {/* Toggle menu light & dark */}
+            <div className="ml-2">
               {isDark ? (
-                <div className="text-[#EBD8BA] shadow">
+                <div className="text-[#b99c5d]">
                   <IoMdMoon size={20} onClick={toggleTheme} />
                 </div>
               ) : (

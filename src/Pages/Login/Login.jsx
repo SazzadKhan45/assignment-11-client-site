@@ -1,9 +1,117 @@
-import React from "react";
+import { useState } from "react";
+import MyContainer from "../../Components/MyContainer/MyContainer";
+import { useForm } from "react-hook-form";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { Link, useNavigate } from "react-router";
+import { FcGoogle } from "react-icons/fc";
+import useAuth from "../../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  //All state hare
+  const [togglePass, setTogglePass] = useState(false);
+
+  // Custom hook
+  const { setLoading, logInUserWithGoogle } = useAuth();
+  const navigate = useNavigate();
+
+  // React hook form function
+  const { register, handleSubmit } = useForm();
+
+  // handle google login
+  const handleGoogleLogin = () => {
+    setLoading(true);
+    logInUserWithGoogle()
+      .then(() => {
+        toast.success("Login Successfully");
+        setLoading(false);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // Handle login form
+  const handleLogin = (data) => {
+    console.log(data);
+  };
+
+  //
   return (
-    <div>
-      <h2>This is login page</h2>
+    <div className="bg-base-200 md:py-12">
+      <MyContainer>
+        <div className="hero-content">
+          <div className="card bg-base-100 w-full max-w-sm md:max-w-lg lg:max-w-2xl shrink-0 shadow-2xl">
+            <div className="card-body">
+              <h1 className="text-2xl md:text-3xl font-bold text-center py-4">
+                WellCome to Login
+              </h1>
+              {/* Google login button */}
+              <button
+                onClick={handleGoogleLogin}
+                className="btn bg-orange-100 text-[16px] text-black border-[#e5e5e5]"
+              >
+                <FcGoogle size={18} />
+                Login with Google
+              </button>
+
+              {/* Divider */}
+              <div className="divider -mb-0.5">OR</div>
+
+              {/* Login form */}
+              <form onSubmit={handleSubmit(handleLogin)}>
+                <fieldset className="fieldset">
+                  {/* Email field */}
+                  <label className="label text-lg">Email</label>
+                  <input
+                    type="email"
+                    className="input w-full text-[16px]"
+                    placeholder="Email"
+                    {...register("email")}
+                  />
+                  {/* Password field */}
+                  <label className="label text-lg">Password</label>
+                  <div className="relative">
+                    <input
+                      type={togglePass ? "text" : "password"}
+                      className="input w-full pr-10 text-[16px]" // add padding-right so text doesn't overlap icon
+                      placeholder="Password"
+                      {...register("password")}
+                    />
+
+                    <span
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-xl cursor-pointer"
+                      onClick={() => setTogglePass(!togglePass)}
+                    >
+                      {togglePass ? <IoMdEye /> : <IoMdEyeOff />}
+                    </span>
+                  </div>
+
+                  <div>
+                    <p className="link link-hover text-[16px] cursor-pointer text-blue-500">
+                      Forgot password?
+                    </p>
+                  </div>
+                  <button className="btn btn-neutral mt-4 text-lg">
+                    Login
+                  </button>
+                </fieldset>
+              </form>
+              {/*  */}
+              <div className="mx-auto text-[16px] pb-4 mt-2">
+                <span>Already have an account?</span>
+                <Link
+                  to="/auth/register"
+                  className="ml-1 text-blue-500 font-medium"
+                >
+                  Register
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </MyContainer>
     </div>
   );
 };
