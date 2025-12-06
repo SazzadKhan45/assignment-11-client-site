@@ -12,11 +12,16 @@ const Login = () => {
   const [togglePass, setTogglePass] = useState(false);
 
   // Custom hook
-  const { setLoading, logInUserWithGoogle } = useAuth();
+  const { setLoading, logInUserWithGoogle, loginUserEmailPassword } = useAuth();
   const navigate = useNavigate();
 
   // React hook form function
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   // handle google login
   const handleGoogleLogin = () => {
@@ -28,13 +33,31 @@ const Login = () => {
         navigate("/");
       })
       .catch((error) => {
+        toast.error("Login Failed");
         console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   // Handle login form
-  const handleLogin = (data) => {
-    console.log(data);
+  const handleLoginEmailPassword = (data) => {
+    setLoading(true);
+
+    loginUserEmailPassword(data.email, data.password)
+      .then(() => {
+        toast.success("Login Successful");
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error("Login Failed");
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+        reset();
+      });
   };
 
   //
@@ -60,16 +83,21 @@ const Login = () => {
               <div className="divider -mb-0.5">OR</div>
 
               {/* Login form */}
-              <form onSubmit={handleSubmit(handleLogin)}>
+              <form onSubmit={handleSubmit(handleLoginEmailPassword)}>
                 <fieldset className="fieldset">
                   {/* Email field */}
-                  <label className="label text-lg">Email</label>
+                  <label className="label text-lg">Your Email</label>
                   <input
                     type="email"
                     className="input w-full text-[16px]"
-                    placeholder="Email"
-                    {...register("email")}
+                    placeholder="Enter Email"
+                    {...register("email", { required: true })}
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">
+                      Email is required
+                    </p>
+                  )}
                   {/* Password field */}
                   <label className="label text-lg">Password</label>
                   <div className="relative">
@@ -77,9 +105,8 @@ const Login = () => {
                       type={togglePass ? "text" : "password"}
                       className="input w-full pr-10 text-[16px]" // add padding-right so text doesn't overlap icon
                       placeholder="Password"
-                      {...register("password")}
+                      {...register("password", { required: true })}
                     />
-
                     <span
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-xl cursor-pointer"
                       onClick={() => setTogglePass(!togglePass)}
@@ -87,6 +114,11 @@ const Login = () => {
                       {togglePass ? <IoMdEye /> : <IoMdEyeOff />}
                     </span>
                   </div>
+                  {errors.password && (
+                    <p className="text-red-500 text-sm mt-1">
+                      Password is required
+                    </p>
+                  )}
 
                   <div>
                     <p className="link link-hover text-[16px] cursor-pointer text-blue-500">
@@ -100,7 +132,7 @@ const Login = () => {
               </form>
               {/*  */}
               <div className="mx-auto text-[16px] pb-4 mt-2">
-                <span>Already have an account?</span>
+                <span>Don’t have an account?</span>
                 <Link
                   to="/auth/register"
                   className="ml-1 text-blue-500 font-medium"

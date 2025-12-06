@@ -6,7 +6,7 @@ import { Outlet } from "react-router";
 const AuthLayout = () => {
   return (
     <div>
-      <header>
+      <header className="sticky top-0 z-10">
         <Navbar />
       </header>
       {/*  */}
