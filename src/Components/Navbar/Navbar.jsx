@@ -6,6 +6,7 @@ import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import useAuth from "./../../Hooks/useAuth";
 import { CgLogOut } from "react-icons/cg";
 import { toast } from "react-toastify";
+import LogoImg from "../../assets/Logo.png";
 
 const Navbar = () => {
   //
@@ -32,8 +33,8 @@ const Navbar = () => {
         to="/"
         className={({ isActive }) =>
           isActive
-            ? "text-orange-500 font-semibold underline"
-            : " hover:text-orange-400"
+            ? "text-[#f0c14a] font-semibold underline"
+            : " hover:text-[#eeb62a]"
         }
       >
         Home
@@ -43,44 +44,54 @@ const Navbar = () => {
         to="/service"
         className={({ isActive }) =>
           isActive
-            ? "text-orange-500 font-semibold underline"
-            : " hover:text-orange-400"
+            ? "text-[#f0c14a] font-semibold underline"
+            : " hover:text-[#eeb62a]"
         }
       >
-        Services
+        All-Product
       </NavLink>
-
       <NavLink
-        to="/blogs"
+        to="/service"
         className={({ isActive }) =>
           isActive
-            ? "text-orange-500 font-semibold underline"
-            : " hover:text-orange-400"
+            ? "text-[#f0c14a] font-semibold underline"
+            : " hover:text-[#eeb62a]"
         }
       >
-        Blogs
+        Dashboard
       </NavLink>
 
-      <NavLink
-        to="/contact"
-        className={({ isActive }) =>
-          isActive
-            ? "text-orange-500 font-semibold underline"
-            : " hover:text-orange-400"
-        }
-      >
-        Contact Us
-      </NavLink>
+      {!user && (
+        <>
+          <NavLink
+            to="/blogs"
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#f0c14a] font-semibold underline"
+                : " hover:text-[#eeb62a]"
+            }
+          >
+            About Us
+          </NavLink>
+
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#f0c14a] font-semibold underline"
+                : " hover:text-[#eeb62a]"
+            }
+          >
+            Contact
+          </NavLink>
+        </>
+      )}
     </>
   );
 
   // Ui Code
   return (
-    <div
-      className={`shadow-sm ${
-        isDark ? "bg-gray-600 text-white" : "bg-white text-black"
-      }`}
-    >
+    <div className={`shadow-sm bg-gray-700 text-white`}>
       <MyContainer>
         <div className="navbar ">
           <div className="navbar-start">
@@ -113,13 +124,16 @@ const Navbar = () => {
                 {Links}
               </ul>
             </div>
-            <Link to="/" className="btn btn-ghost text-xl hidden md:flex">
-              Assignment-11
+            <Link to="/" className=" hidden md:flex items-center">
+              <img className="h-[50px] w-[60px]" src={LogoImg} alt="" />
+              <h2 className="-ml-2 font-bold border-b-2">
+                G-<span className="text-[#F0B92D]">Flow</span>
+              </h2>
             </Link>
           </div>
           <div className="navbar-center hidden md:flex">
             <ul
-              className={`menu menu-horizontal px-1 flex gap-4 md:font-medium lg:text-[16px]
+              className={`menu menu-horizontal px-1 flex md:gap-6 lg:gap-10 md:font-medium lg:text-[16px]
               }`}
             >
               {Links}
@@ -170,7 +184,12 @@ const Navbar = () => {
                 </ul>
               </div>
             ) : (
-              <Link to="/auth/login" className="btn">
+              <Link
+                to="/auth/login"
+                className={` px-4 py-1 rounded-full font-medium text-black hover:bg-[#f1cd72] duration-300 ${
+                  isDark ? "bg-white" : "bg-[#ecc664]"
+                }`}
+              >
                 Login
               </Link>
             )}
