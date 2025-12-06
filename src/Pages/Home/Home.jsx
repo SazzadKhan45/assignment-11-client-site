@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router";
+import MyContainer from "../../Components/MyContainer/MyContainer";
 
 const Home = () => {
   return (
-    <div>
-      <h2>This is home</h2>
-      <Link to="/auth/register">Register</Link>
+    <div className="py-12">
+      <MyContainer>
+        <h2>This is home</h2>
+      </MyContainer>
     </div>
   );
 };

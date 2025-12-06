@@ -14,6 +14,7 @@ const Navbar = () => {
   //
   const { user, loading, LogoutUser } = useAuth();
   const navigate = useNavigate();
+  // console.log(user);
 
   // handle logOut user
   const handleLogoutUser = () => {
@@ -27,6 +28,8 @@ const Navbar = () => {
       });
   };
 
+  // Nav Links
+
   const Links = (
     <>
       <NavLink
@@ -34,7 +37,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? "text-[#f0c14a] font-semibold underline"
-            : " hover:text-[#eeb62a]"
+            : "hover:text-[#eeb62a]"
         }
       >
         Home
@@ -45,21 +48,24 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? "text-[#f0c14a] font-semibold underline"
-            : " hover:text-[#eeb62a]"
+            : "hover:text-[#eeb62a]"
         }
       >
         All-Product
       </NavLink>
-      <NavLink
-        to="/service"
-        className={({ isActive }) =>
-          isActive
-            ? "text-[#f0c14a] font-semibold underline"
-            : " hover:text-[#eeb62a]"
-        }
-      >
-        Dashboard
-      </NavLink>
+
+      {user && (
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#f0c14a] font-semibold underline"
+              : "hover:text-[#eeb62a]"
+          }
+        >
+          Dashboard
+        </NavLink>
+      )}
 
       {!user && (
         <>
@@ -68,7 +74,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-[#f0c14a] font-semibold underline"
-                : " hover:text-[#eeb62a]"
+                : "hover:text-[#eeb62a]"
             }
           >
             About Us
@@ -79,7 +85,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-[#f0c14a] font-semibold underline"
-                : " hover:text-[#eeb62a]"
+                : "hover:text-[#eeb62a]"
             }
           >
             Contact
@@ -119,7 +125,9 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className={`menu menu-sm dropdown-content  rounded-b z-1 mt-3 w-52 p-2 shadow pl-6 space-y-2 ${
+                  isDark ? "bg-white text-black" : "bg-gray-500"
+                }`}
               >
                 {Links}
               </ul>
@@ -184,14 +192,24 @@ const Navbar = () => {
                 </ul>
               </div>
             ) : (
-              <Link
-                to="/auth/login"
-                className={` px-4 py-1 rounded-full font-medium text-black hover:bg-[#f1cd72] duration-300 ${
-                  isDark ? "bg-white" : "bg-[#ecc664]"
-                }`}
-              >
-                Login
-              </Link>
+              <div>
+                <Link
+                  to="/auth/login"
+                  className={` px-4 pt-1 pb-2 rounded-full font-medium text-black hover:bg-[#f1cd72] duration-300 ${
+                    isDark ? "bg-white" : "bg-[#ecc664]"
+                  }`}
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/auth/register"
+                  className={`px-4 pb-2 pt-1 ml-2 rounded-full font-medium text-black  ${
+                    isDark ? "bg-[#3f8ff8] text-white" : "bg-white"
+                  }`}
+                >
+                  Register
+                </Link>
+              </div>
             )}
 
             {/* Toggle menu light & dark */}

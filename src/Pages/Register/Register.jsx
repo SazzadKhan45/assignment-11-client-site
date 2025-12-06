@@ -8,6 +8,7 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import axios from "axios";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 //
 const Register = () => {
@@ -23,6 +24,7 @@ const Register = () => {
     registerUserEmailPassword,
     updateUserProfile,
   } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   console.log(user);
 
@@ -37,10 +39,28 @@ const Register = () => {
   // handle google login
   const handleGoogleLogin = () => {
     setLoading(true);
+
     logInUserWithGoogle()
+      .then((result) => {
+        const user = result.user;
+
+        const userData = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+          role: "buyer",
+        };
+
+        return axiosSecure.post("/userList", userData).catch((error) => {
+          if (error.response?.status === 409) {
+            // User exists → treat as success
+            return { data: { inserted: false } };
+          }
+          throw error;
+        });
+      })
       .then(() => {
         toast.success("Login Successfully");
-        setLoading(false);
         navigate("/");
       })
       .catch((error) => {
@@ -52,15 +72,15 @@ const Register = () => {
       });
   };
 
-  // Handle login form
+  // Handle register user email & password
   const handleRegisterEmailPassword = async (data) => {
     try {
       setLoading(true);
 
-      // 1. Create User
+      // 1. Create user
       const result = await registerUserEmailPassword(data.email, data.password);
 
-      // 2. Upload image to imgbb
+      // 2. Upload image to ImgBB
       const imageFile = data.photo[0];
       const formData = new FormData();
       formData.append("image", imageFile);
@@ -71,32 +91,44 @@ const Register = () => {
         `https://api.imgbb.com/1/upload?key=${host_key}`,
         formData
       );
-      // Profile data
-      const profile = {
+
+      const photoURL = uploadRes.data.data.display_url;
+
+      // 3. Update Firebase profile
+      await updateUserProfile({
         displayName: data.name,
-        photoURL: uploadRes.data.data.display_url,
+        photoURL: photoURL,
+      });
+
+      // 4. Prepare user info for MongoDB
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        role: data.role,
+        photo: photoURL,
       };
-      // MUST await Firebase profile update
-      await updateUserProfile(profile)
-        .then(() => {
-          //  Update UI user state
-          setUser({
-            ...result.user,
-            displayName: data.name,
-            photoURL: uploadRes.data.data.display_url,
-          });
 
-          toast.success("Successfully Registered!");
+      // 5. Save user to MongoDB
+      await axiosSecure.post("/userList", userInfo);
 
-          navigate("/");
+      // 6. Update UI user state
+      setUser({
+        ...result.user,
+        displayName: data.name,
+        photoURL: photoURL,
+      });
 
-          reset();
-        })
-        .catch((err) => {
-          console.log("Profile Update Error:", err);
-        });
-    } catch (err) {
-      console.log("Registration Error:", err);
+      toast.success("Successfully Registered!");
+      navigate("/");
+      reset();
+    } catch (error) {
+      console.error("Registration error:", error);
+
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("This email is already in use.");
+      } else {
+        toast.error("Registration Failed!");
+      }
     } finally {
       setLoading(false);
     }
@@ -108,7 +140,7 @@ const Register = () => {
     <div className="bg-base-200 md:py-4">
       <MyContainer>
         <div className="hero-content">
-          <div className="card bg-base-100 w-full max-w-sm md:max-w-lg lg:max-w-2xl shrink-0 shadow-2xl">
+          <div className="card bg-base-100 w-full max-w-sm md:max-w-lg lg:max-w-2xl shrink-0 shadow-2xl md:px-6 lg:px-12">
             <div className="card-body">
               <h1 className="text-2xl md:text-3xl font-bold text-center pb-4">
                 Register a New Account
@@ -148,7 +180,7 @@ const Register = () => {
                   <input
                     type="file"
                     className="file-input w-full"
-                    {...register("photo")}
+                    {...register("photo", { required: true })}
                   />
                   {errors.photo && (
                     <p className="text-red-500 text-sm mt-1">

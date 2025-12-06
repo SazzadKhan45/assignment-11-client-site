@@ -12,44 +12,40 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // req interceptor
-    const reqInterceptor = axiosSecure.interceptors.request.use((config) => {
-      if (user?.accessToken) {
-        config.headers.Authorization = `Bearer ${user.accessToken}`;
+    // Request interceptor
+    const reqInterceptor = axiosSecure.interceptors.request.use(
+      async (config) => {
+        if (user) {
+          // Use Firebase ID token
+          const token = await user.getIdToken();
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
       }
-      return config;
-    });
+    );
+
     // Response interceptor
     const resInterceptor = axiosSecure.interceptors.response.use(
-      (response) => {
-        return response;
-      },
+      (response) => response,
       (error) => {
-        // console.log(error);
-        // Unauthorized & Forbidden user logout to login page
-        const statusCode = error.status;
+        const statusCode = error.response?.status;
+
         if (statusCode === 401 || statusCode === 403) {
-          LogoutUser()
-            .then(() => {
-              navigate("/");
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+          LogoutUser().then(() => {
+            navigate("/login");
+          });
         }
-        console.log(statusCode);
 
         return Promise.reject(error);
       }
     );
-    //
+
+    // Cleanup interceptors
     return () => {
       axiosSecure.interceptors.request.eject(reqInterceptor);
       axiosSecure.interceptors.response.eject(resInterceptor);
     };
-  }, [user, navigate, LogoutUser]);
-
-  //
+  }, [user, LogoutUser, navigate]);
 
   return axiosSecure;
 };

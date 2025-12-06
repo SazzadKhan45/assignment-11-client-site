@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import AuthLayout from "../Layouts/AuthLayout/AuthLayout";
 import Login from "../Pages/Login/Login";
 import Register from "./../Pages/Register/Register";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,14 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <h2>Hello world</h2>,
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoutes>
+            <h2>Hello world</h2>{" "}
+          </PrivateRoutes>
+        ),
       },
     ],
   },

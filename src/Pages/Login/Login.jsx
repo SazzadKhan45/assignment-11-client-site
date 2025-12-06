@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Login = () => {
   //All state hare
@@ -13,6 +14,7 @@ const Login = () => {
 
   // Custom hook
   const { setLoading, logInUserWithGoogle, loginUserEmailPassword } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
   // React hook form function
@@ -26,10 +28,28 @@ const Login = () => {
   // handle google login
   const handleGoogleLogin = () => {
     setLoading(true);
+
     logInUserWithGoogle()
+      .then((result) => {
+        const user = result.user;
+
+        const userData = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+          role: "buyer",
+        };
+
+        return axiosSecure.post("/userList", userData).catch((error) => {
+          if (error.response?.status === 409) {
+            // User exists → treat as success
+            return { data: { inserted: false } };
+          }
+          throw error;
+        });
+      })
       .then(() => {
         toast.success("Login Successfully");
-        setLoading(false);
         navigate("/");
       })
       .catch((error) => {
@@ -65,7 +85,7 @@ const Login = () => {
     <div className="bg-base-200 md:py-12">
       <MyContainer>
         <div className="hero-content">
-          <div className="card bg-base-100 w-full max-w-sm md:max-w-lg lg:max-w-2xl shrink-0 shadow-2xl">
+          <div className="card bg-base-100 w-full max-w-sm md:max-w-lg lg:max-w-2xl shrink-0 shadow-2xl md:px-8 lg:px-12 md:py-4">
             <div className="card-body">
               <h1 className="text-2xl md:text-3xl font-bold text-center py-4">
                 WellCome to Login
