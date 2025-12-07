@@ -1,5 +1,6 @@
 import HeroSlider from "../../Components/HeroSlider/HeroSlider";
 import HomePageProducts from "../../Components/HomePageProducts/HomePageProducts";
+import WorksStep from "../../Components/WorksStep/WorksStep";
 import useTheme from "../../Hooks/useTheme";
 
 const Home = () => {
@@ -11,7 +12,11 @@ const Home = () => {
       </header>
       {/*  */}
       <main>
+        {/* Dynamic data loaded Component */}
         <HomePageProducts />
+
+        {/* How to works step by step */}
+        <WorksStep />
       </main>
     </div>
   );
