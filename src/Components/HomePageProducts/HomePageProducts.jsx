@@ -3,6 +3,9 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import MyContainer from "../MyContainer/MyContainer";
 import { AiFillFire } from "react-icons/ai";
+import Loading from "../Loading/Loading";
+import ProductsCard from "../ProductsCard/ProductsCard";
+import { Link } from "react-router";
 
 const HomePageProducts = () => {
   const axiosSecure = useAxiosSecure();
@@ -11,7 +14,7 @@ const HomePageProducts = () => {
     queryKey: ["Latest Product"],
     queryFn: async () => {
       const res = await axiosSecure.get("/products-home");
-      return res.data;
+      return res.data.data;
     },
   });
 
@@ -31,7 +34,24 @@ const HomePageProducts = () => {
             every occasion.
           </p>
         </div>
-        {isLoading ? "Loading" : <h2>Total Product {products?.data.length}</h2>}
+
+        {/*  */}
+        <div className="mt-12">
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {products.map((product) => (
+                <ProductsCard key={product._id} product={product} />
+              ))}
+            </div>
+          )}
+        </div>
+        <h2 className="text-center text-lg font-medium mt-8">
+          <Link to="/all-products" className="px-4 py-2 rounded  bg-primary">
+            Show More..
+          </Link>
+        </h2>
       </MyContainer>
     </div>
   );

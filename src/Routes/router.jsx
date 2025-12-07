@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "/service",
+        path: "/all-products",
         element: <h2>Hello world</h2>,
       },
       {

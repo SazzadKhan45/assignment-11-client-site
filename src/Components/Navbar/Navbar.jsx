@@ -44,7 +44,7 @@ const Navbar = () => {
       </NavLink>
 
       <NavLink
-        to="/service"
+        to="/all-products"
         className={({ isActive }) =>
           isActive
             ? "text-[#f0c14a] font-semibold underline"
