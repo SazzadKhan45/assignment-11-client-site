@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router";
 
 const ProductsCard = ({ product }) => {
-  const { media, productName, description } = product;
+  const { media, productName, description, price, category } = product;
 
   return (
     <div>
-      <div className="card bg-base-100 shadow-sm p-4 transform transition-transform duration-300 hover:scale-105 hover:duration-500">
+      <div className="card bg-base-100 shadow-sm p-4 transform transition-transform duration-300 hover:scale-95 hover:duration-500 md:h-[600px] lg:h-[650px]">
         <figure className="p-4">
           <img
             className="w-full h-[200px] md:h-[250px] lg:h-[300px] rounded border"
@@ -15,11 +16,16 @@ const ProductsCard = ({ product }) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{productName}</h2>
-          <p className="text-justify">{description}</p>
-          <div className="card-actions">
-            <div className="badge badge-outline">Fashion</div>
-            <div className="badge badge-outline">Products</div>
+          <p className="text-justify text-gray-500">{description}</p>
+          <div className="card-actions justify-end">
+            <div className="badge badge-outline">{category}</div>
           </div>
+          <h2 className="text-lg font-bold">Price : ${price}</h2>
+        </div>
+        <div className="px-6 w-full pb-4">
+          <Link className="bg-primary px-8 py-2 rounded-2xl ">
+            View Details
+          </Link>
         </div>
       </div>
     </div>
