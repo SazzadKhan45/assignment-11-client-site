@@ -1,13 +1,18 @@
-import React from "react";
-import { Link } from "react-router";
-import MyContainer from "../../Components/MyContainer/MyContainer";
+import HeroSlider from "../../Components/HeroSlider/HeroSlider";
+import HomePageProducts from "../../Components/HomePageProducts/HomePageProducts";
+import useTheme from "../../Hooks/useTheme";
 
 const Home = () => {
+  const { isDark } = useTheme();
   return (
-    <div className="py-12">
-      <MyContainer>
-        <h2>This is home</h2>
-      </MyContainer>
+    <div className={`py-12 ${isDark ? "bg-gray-900" : "bg-amber-50"}`}>
+      <header>
+        <HeroSlider />
+      </header>
+      {/*  */}
+      <main>
+        <HomePageProducts />
+      </main>
     </div>
   );
 };

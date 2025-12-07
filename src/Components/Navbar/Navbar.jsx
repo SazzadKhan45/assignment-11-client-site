@@ -53,6 +53,16 @@ const Navbar = () => {
       >
         All-Product
       </NavLink>
+      <NavLink
+        to="/add-product"
+        className={({ isActive }) =>
+          isActive
+            ? "text-[#f0c14a] font-semibold underline"
+            : "hover:text-[#eeb62a]"
+        }
+      >
+        Add Product
+      </NavLink>
 
       {user && (
         <NavLink

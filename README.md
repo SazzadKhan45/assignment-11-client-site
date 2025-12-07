@@ -1,16 +1,33 @@
-# React + Vite
+Completed List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Login Page
+2. Register Page
+3. Navbar
 
-Currently, two official plugins are available:
+4. Product Details Page (Private Route)
+   This page displays detailed information about a specific product selected from the All Products page.
+   Information Displayed:
+   Product Image(s) / Demo Video
+   Product Name / Title
+   Product Description
+   Category
+   Price
+   Available Quantity
+   minimum order
+   Payment Options (as selected by Manager)
+   Order / Booking Button (role & account status dependent)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+5. Home Page Requirements
+   Create a modern, eye-catching landing page with smooth Framer-Motion animations, clean UX, and real backend integration (MongoDB).
 
-## React Compiler
+Hero Banner
+A visually appealing section with a meaningful image, descriptive text, and a clear call-to-action button (like View Product, Book a Product, etc., also clickable).
+Our Products (6 cards from MongoDB with limit)
+Cards include image, name, short desc, price
+“View Details” button
+How It Works (Step-by-step)
+Customer Feedback (Carousel)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Add 2 Extra section Design
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🎯 When the user clicks the "View Details" button, they are redirected to the product details page.

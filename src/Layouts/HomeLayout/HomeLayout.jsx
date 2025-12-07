@@ -6,7 +6,7 @@ const HomeLayout = () => {
   return (
     <div>
       {/*  */}
-      <header className="sticky top-0 z-10">
+      <header className="sticky top-0 z-100">
         <Navbar />
       </header>
 

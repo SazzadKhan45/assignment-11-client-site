@@ -1,0 +1,482 @@
+[
+  {
+    "productId": "G-001",
+    "productName": "Men's Cotton T-Shirt",
+    "title": "Premium Men's Cotton T-Shirt",
+    "description": "This men's cotton T-shirt is crafted from soft, breathable fabric designed for all-day comfort. It features durable stitching, a relaxed fit, and high-quality dye that resists fading after multiple washes. Perfect for casual wear, outdoor activities, or layering under jackets and shirts. The material provides excellent airflow, ensuring a cool and fresh feeling throughout the day. Ideal for daily use, office casual looks, or weekend outings. Its minimalist design makes it easy to pair with jeans, joggers, or shorts. A reliable and comfortable wardrobe essential suitable for men of all ages.",
+    "category": "T-Shirt",
+    "price": 8,
+    "currency": "USD",
+    "availableQuantity": 600,
+    "minimumOrder": 50,
+    "createdAt": "2025-08-12T10:23:41.000Z",
+    "supplierEmail": "sales01@garmentwholesale.co",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/p6WgGyCQ/Premium-Men-s-Cotton-T-Shirt-1.jpg",
+        "https://i.ibb.co.com/PZ2bLY7j/Premium-Men-s-Cotton-T-Shirt-2.avif"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-002",
+    "productName": "Men's Casual Pants",
+    "title": "Soft Cotton Casual Pants",
+    "description": "These men's casual pants offer a perfect blend of comfort and durability. Made from high-quality cotton fabric, they provide excellent breathability and flexibility. The modern slim-fit design enhances your look while maintaining total comfort. With reinforced stitching and premium materials, these pants remain reliable even after frequent washing. Suitable for office wear, travel, casual outings, or daily activities.",
+    "category": "Pants",
+    "price": 12,
+    "currency": "USD",
+    "availableQuantity": 550,
+    "minimumOrder": 50,
+    "createdAt": "2025-07-29T14:15:22.000Z",
+    "supplierEmail": "info@bulkapparelhub.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/1G57xLyt/Soft-Cotton-Casual-Pants-1.jpg",
+        "https://i.ibb.co.com/6RF73x6W/Soft-Cotton-Casual-Pants-2.webp"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-003",
+    "productName": "Men's Denim Shirt",
+    "title": "Classic Men's Denim Shirt",
+    "description": "This classic men's denim shirt combines rugged style with premium comfort. Made from high-quality denim fabric, it offers durability and a stylish look that suits casual and semi-formal outfits. The shirt features strong stitching, functional pockets, and a smooth finish that remains soft even after repeated washes.",
+    "category": "Shirt",
+    "price": 15,
+    "currency": "USD",
+    "availableQuantity": 620,
+    "minimumOrder": 50,
+    "createdAt": "2025-06-18T09:47:11.000Z",
+    "supplierEmail": "orders@denimfactorydirect.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/hFMxL2hg/Classic-Men-s-Denim-Shirt-1.jpg",
+        "https://i.ibb.co.com/HLybqRQG/Classic-Men-s-Denim-Shirt-2.jpg"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-004",
+    "productName": "Men's Polo Shirt",
+    "title": "Classic Men’s Polo Shirt",
+    "description": "This men's polo shirt is crafted from breathable cotton fabric that combines comfort and style. The classic collar design and button placket offer a semi-formal look suitable for office wear and casual outings. The soft, durable material ensures long-lasting comfort while maintaining shape after repeated washes.",
+    "category": "Polo Shirt",
+    "price": 9,
+    "currency": "USD",
+    "availableQuantity": 720,
+    "minimumOrder": 50,
+    "createdAt": "2025-05-03T16:31:55.000Z",
+    "supplierEmail": "polo@wholesale@textilebazar.net",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/XZKF1v5K/Classic-Men-s-Polo-Shirt-1.webp",
+        "https://i.ibb.co.com/FLr05jfw/Classic-Men-s-Polo-Shirt-2.jpg"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-005",
+    "productName": "Men's Hoodie",
+    "title": "Soft Fleece Hoodie",
+    "description": "This men's hoodie is designed for warmth, comfort, and flexibility. Made from soft, breathable fleece fabric, it maintains body warmth while keeping the wearer comfortable. The long-sleeve design and adjustable hood provide protection against wind and cold.",
+    "category": "Hoodie",
+    "price": 6,
+    "currency": "USD",
+    "availableQuantity": 580,
+    "minimumOrder": 50,
+    "createdAt": "2025-04-21T11:08:19.000Z",
+    "supplierEmail": "hoodies@winterwearbulk.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/ymFLk1n9/Soft-Fleece-Hoodie-1.webp",
+        "https://i.ibb.co.com/JFW2PYfR/Soft-Fleece-Hoodie-2.jpg"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-006",
+    "productName": "Men's Cargo Shorts",
+    "title": "Lightweight Cargo Shorts",
+    "description": "These men's cargo shorts are built for comfort, durability, and practicality. Made from breathable cotton fabric, they provide excellent airflow during hot weather. The shorts include multiple spacious pockets, perfect for carrying essentials during outdoor activities.",
+    "category": "Shorts",
+    "price": 10,
+    "currency": "USD",
+    "availableQuantity": 650,
+    "minimumOrder": 50,
+    "createdAt": "2025-09-01T13:42:07.000Z",
+    "supplierEmail": "cargo@summerapparel.co",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/KjD7sST7/Lightweight-Casual-Skirt-1.jpg",
+        "https://i.ibb.co.com/wFSRfbyk/Lightweight-Casual-Skirt-2.jpg"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-007",
+    "productName": "Men's Sweat Shorts",
+    "title": "Soft Cotton Sweat Shorts",
+    "description": "These men's sweat shorts are made from soft, breathable cotton fabric, offering exceptional comfort for daily wear and workout sessions. The flexible waistband ensures a great fit while providing freedom of movement.",
+    "category": "Shorts",
+    "price": 7,
+    "currency": "USD",
+    "availableQuantity": 590,
+    "minimumOrder": 50,
+    "createdAt": "2025-03-14T08:56:33.000Z",
+    "supplierEmail": "sweatshorts@activeweardirect.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/7x4YQK2F/Soft-Cotton-Sweat-Shorts-1.webp",
+        "https://i.ibb.co.com/xKDJSbPT/Soft-Cotton-Sweat-Shorts-2.webp"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-008",
+    "productName": "Men's Jogger Pants",
+    "title": "Comfort Fit Jogger Pants",
+    "description": "These men’s jogger pants are designed with a perfect blend of comfort and performance. Made from soft stretchable fabric, they provide excellent flexibility for workouts, running, or casual wear.",
+    "category": "Pants",
+    "price": 13,
+    "currency": "USD",
+    "availableQuantity": 580,
+    "minimumOrder": 50,
+    "createdAt": "2024-12-27T17:20:44.000Z",
+    "supplierEmail": "womenstop@ladiesfashionwholesale.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/dsRmFMdm/Comfort-Fit-Jogger-Pants-1.webp",
+        "https://i.ibb.co.com/CC6HL82/Comfort-Fit-Jogger-Pants-2.avif"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-009",
+    "productName": "Women's Casual Top",
+    "title": "Soft Cotton Ladies Casual Top",
+    "description": "This women’s casual top is made from premium soft cotton that ensures all-day comfort and breathability. Featuring a relaxed fit and lightweight texture, it is perfect for warm weather and daily use.",
+    "category": "Top",
+    "price": 7,
+    "currency": "USD",
+    "availableQuantity": 530,
+    "minimumOrder": 50,
+    "createdAt": "2025-10-05T09:11:28.000Z",
+    "supplierEmail": "palazzo@ethnicwearco.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/fYpkHxGb/Soft-Cotton-Ladies-Casual-Top-1.jpg",
+        "https://i.ibb.co.com/YFDfLqMz/Soft-Cotton-Ladies-Casual-Top-2.jpg"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-010",
+    "productName": "Women’s Leggings",
+    "title": "High Elasticity Women’s Leggings",
+    "description": "These women's leggings are designed for ultimate comfort and flexibility. Made from a soft, stretchable fabric blend, they provide a comfortable fit suitable for daily wear, workouts, yoga, or casual outings.",
+    "category": "Leggings",
+    "price": 8,
+    "currency": "USD",
+    "availableQuantity": 610,
+    "minimumOrder": 50,
+    "createdAt": "2025-02-19T12:34:50.000Z",
+    "supplierEmail": "skirts@summerfashionhub.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/jPXmQndC/High-Elasticity-Women-s-Leggings-1.jpg",
+        "https://i.ibb.co.com/TBMdcXh9/High-Elasticity-Women-s-Leggings-2.avif"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-011",
+    "productName": "Women’s Palazzo Pants",
+    "title": "Flowy Palazzo Pants",
+    "description": "These women’s palazzo pants offer exceptional comfort with a soft and flowy fabric that moves gracefully with every step. The wide-leg design provides excellent ventilation, making them ideal for warm weather.",
+    "category": "Palazzo",
+    "price": 9,
+    "currency": "USD",
+    "availableQuantity": 600,
+    "minimumOrder": 50,
+    "createdAt": "2025-11-11T15:07:13.000Z",
+    "supplierEmail": "kids@childrensclothingbulk.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/WRqHx1d/Flowy-Palazzo-Pants-1.jpg",
+        "https://i.ibb.co.com/LhQG0t8y/Flowy-Palazzo-Pants-2.webp"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-012",
+    "productName": "Women’s Cotton Skirt",
+    "title": "Lightweight Casual Skirt",
+    "description": "This women’s cotton skirt is made from lightweight and breathable fabric, offering comfort and elegance for daily wear. The smooth texture feels gentle on the skin, making it perfect for warm weather.",
+    "category": "Skirt",
+    "price": 9,
+    "currency": "USD",
+    "availableQuantity": 560,
+    "minimumOrder": 50,
+    "createdAt": "2024-11-30T10:45:22.000Z",
+    "supplierEmail": "kidsdenim@tinytrendzfactory.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/SXwqgq6R/Lightweight-Casual-Skirt-2.jpg",
+        "https://i.ibb.co.com/twFSF1n6/Lightweight-Casual-Skirt-1.avif"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-013",
+    "productName": "Kids T-Shirt",
+    "title": "Soft Cotton Kids T-Shirt",
+    "description": "This kids T-shirt is made from soft, breathable cotton that ensures comfort all day. The lightweight material allows free movement and prevents overheating. Designed for active children, it is durable and retains its color even after multiple washes.",
+    "category": "Kids T-Shirt",
+    "price": 5,
+    "currency": "USD",
+    "availableQuantity": 620,
+    "minimumOrder": 50,
+    "createdAt": "2025-01-08T14:19:36.000Z",
+    "supplierEmail": "kidsjacket@winterkidswholesale.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/F44y6XX0/Soft-Cotton-Kids-T-Shirt-1.jpg",
+        "https://i.ibb.co.com/FLyKqyjy/Soft-Cotton-Kids-T-Shirt-2.jpg"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-014",
+    "productName": "Kids Jeans",
+    "title": "Durable Kids Denim Jeans",
+    "description": "These kids denim jeans are crafted from durable denim fabric that provides comfort and style. The soft material ensures ease of movement for active children. With reinforced stitching and quality finishing, the jeans withstand everyday wear and repeated washing.",
+    "category": "Kids Jeans",
+    "price": 10,
+    "currency": "USD",
+    "availableQuantity": 580,
+    "minimumOrder": 50,
+    "createdAt": "2025-09-20T07:53:41.000Z",
+    "supplierEmail": "palazzo2@flowyapparel.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/DHBHYcZ7/Durable-Kids-Denim-Jeans-1.jpg",
+        "https://i.ibb.co.com/ynN7HbFJ/Durable-Kids-Denim-Jeans-2.webp"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-015",
+    "productName": "Kids Jacket",
+    "title": "Warm Kids Casual Jacket",
+    "description": "This kids jacket provides warmth and comfort with soft, insulated fabric. Ideal for outdoor activities, travel, or casual wear, it features durable stitching and a smooth lining that feels gentle on the skin.",
+    "category": "Kids Jacket",
+    "price": 12,
+    "currency": "USD",
+    "availableQuantity": 560,
+    "minimumOrder": 50,
+    "createdAt": "2024-10-15T11:27:59.000Z",
+    "supplierEmail": "printedtees@graphicwearsupplier.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/Wp7b5DpJ/Warm-Kids-Casual-Jacket-1.jpg",
+        "https://i.ibb.co.com/LD4nc9yM/Warm-Kids-Casual-Jacket-2.jpg"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-016",
+    "productName": "Women’s Palazzo Pants",
+    "title": "Flowy Palazzo Pants",
+    "description": "These women’s palazzo pants offer exceptional comfort with a soft and flowy fabric that moves gracefully with every step. The wide-leg design provides excellent ventilation, making them ideal for warm weather.",
+    "category": "Palazzo",
+    "price": 9,
+    "currency": "USD",
+    "availableQuantity": 600,
+    "minimumOrder": 50,
+    "createdAt": "2025-06-05T16:12:04.000Z",
+    "supplierEmail": "longsleeve@autumnladieswear.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/6cYTmy0v/Flowy-Palazzo-Pants-1.webp",
+        "https://i.ibb.co.com/kV8tDV83/Flowy-Palazzo-Pants-22.webp"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-017",
+    "productName": "Men’s Printed T-Shirt",
+    "title": "Trendy Graphic T-Shirt",
+    "description": "This men’s printed T-shirt is made from soft and breathable cotton fabric, ensuring all-day comfort. The trendy graphic design adds a stylish and modern touch, making it perfect for casual outings or gatherings.",
+    "category": "T-Shirt",
+    "price": 7,
+    "currency": "USD",
+    "availableQuantity": 650,
+    "minimumOrder": 50,
+    "createdAt": "2025-10-22T09:38:17.000Z",
+    "supplierEmail": "shorts@casualsummerco.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/ynJhrXv6/Trendy-Graphic-T-Shirt-1.png",
+        "https://i.ibb.co.com/KnmCFSX/Trendy-Graphic-T-Shirt-2.jpg"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-018",
+    "productName": "Women’s Long Sleeve Top",
+    "title": "Soft Long Sleeve Ladies Top",
+    "description": "This women’s long sleeve top is crafted from premium soft cotton that ensures warmth and comfort during cooler weather. The elegant design makes it suitable for office wear, casual outings, or layering.",
+    "category": "Top",
+    "price": 11,
+    "currency": "USD",
+    "availableQuantity": 530,
+    "minimumOrder": 50,
+    "createdAt": "2025-04-09T13:05:46.000Z",
+    "supplierEmail": "skirt2@lightbreezefashion.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/99gCYwdB/Soft-Long-Sleeve-Ladies-Top-1.webp",
+        "https://i.ibb.co.com/0ptJpBLj/Soft-Long-Sleeve-Ladies-Top-2.jpg"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-019",
+    "productName": "Men’s Cotton Shorts",
+    "title": "Breathable Men’s Shorts",
+    "description": "These men’s cotton shorts are designed for maximum comfort and breathability. Made from lightweight cotton fabric, they provide excellent ventilation, making them ideal for hot weather or indoor lounging.",
+    "category": "Shorts",
+    "price": 6,
+    "currency": "USD",
+    "availableQuantity": 580,
+    "minimumOrder": 50,
+    "createdAt": "2025-08-30T18:41:29.000Z",
+    "supplierEmail": "skirt2@lightbreezefashion.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/MyxvD001/Breathable-Men-s-Shorts-1.jpg",
+        "https://i.ibb.co.com/xS1NFKPC/Breathable-Men-s-Shorts-2.webp"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  },
+  {
+    "productId": "G-020",
+    "productName": "Women’s Cotton Skirt",
+    "title": "Lightweight Casual Skirt",
+    "description": "This women’s cotton skirt is made from lightweight and breathable fabric, offering comfort and elegance for daily wear. The smooth texture feels gentle on the skin, making it perfect for warm weather.",
+    "category": "Skirt",
+    "price": 9,
+    "currency": "USD",
+    "availableQuantity": 560,
+    "minimumOrder": 50,
+    "createdAt": "2025-07-17T10:14:52.000Z",
+    "supplierEmail": "skirt2@lightbreezefashion.com",
+    "media": {
+      "images": [
+        "https://i.ibb.co.com/V05Msd1P/Lightweight-Cargo-Shorts-1.jpg",
+        "https://i.ibb.co.com/jkfPfLwz/Lightweight-Cargo-Shorts-2.jpg"
+      ]
+    },
+    "paymentOptions": ["Cash On Delivery", "Online Payment"],
+    "orderButton": {
+      "visibleForRoles": ["buyer", "manager"],
+      "requiresVerifiedAccount": true
+    }
+  }
+]

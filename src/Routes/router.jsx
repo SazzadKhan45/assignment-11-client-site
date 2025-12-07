@@ -5,6 +5,7 @@ import AuthLayout from "../Layouts/AuthLayout/AuthLayout";
 import Login from "../Pages/Login/Login";
 import Register from "./../Pages/Register/Register";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import AddProduct from "../Components/AddProduct/AddProduct";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <h2>Hello world</h2>,
+      },
+      {
+        path: "/add-product",
+        Component: AddProduct,
       },
       {
         path: "/dashboard",
@@ -55,6 +60,8 @@ const router = createBrowserRouter([
       },
     ],
   },
+
+  // User DashBoard Routes
 ]);
 
 export default router;

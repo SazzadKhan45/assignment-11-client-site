@@ -90,13 +90,6 @@ const Footer = () => {
                   >
                     <FaXTwitter size={15} />
                   </Link>
-                  <Link
-                    className="bg-amber-50 p-1 rounded-full"
-                    to="https://www.facebook.com/"
-                    target="_blank"
-                  >
-                    <FaBehance size={15} />
-                  </Link>
                 </div>
               </div>
             </div>
