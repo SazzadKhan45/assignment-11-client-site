@@ -7,6 +7,7 @@ import Register from "./../Pages/Register/Register";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import AddProduct from "../Components/AddProduct/AddProduct";
 import AllProducts from "../Components/AllProducts/AllProducts";
+import ManagerRoute from "../PrivateRoutes/ManagerRoute";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +33,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        Component: AddProduct,
+        Component: <AddProduct />,
       },
+
       {
         path: "/dashboard",
         element: (

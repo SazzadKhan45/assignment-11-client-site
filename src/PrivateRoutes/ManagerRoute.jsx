@@ -1,11 +1,25 @@
-import React from "react";
+import useAuth from "../Hooks/useAuth";
+import Loading from "../Components/Loading/Loading";
 
-const ManagerRoute = () => {
-  return (
-    <div>
-      <h2>Manager Route</h2>
-    </div>
-  );
+const ManagerRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  // Not logged in → redirect to login
+  if (!user) {
+    return;
+  }
+
+  // Logged in but not a Manager → redirect to unauthorized page
+  if (user?.role !== "Manager" && user?.role !== "Admin") {
+    return;
+  }
+
+  // Manager → allow
+  return children;
 };
 
 export default ManagerRoute;

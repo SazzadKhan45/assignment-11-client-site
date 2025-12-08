@@ -1,5 +1,6 @@
 import HeroSlider from "../../Components/HeroSlider/HeroSlider";
 import HomePageProducts from "../../Components/HomePageProducts/HomePageProducts";
+import WorkingBands from "../../Components/WorkingBands/WorkingBands";
 import WorksStep from "../../Components/WorksStep/WorksStep";
 import useTheme from "../../Hooks/useTheme";
 
@@ -17,6 +18,9 @@ const Home = () => {
 
         {/* How to works step by step */}
         <WorksStep />
+
+        {/* Garments Brands */}
+        <WorkingBands />
       </main>
     </div>
   );
