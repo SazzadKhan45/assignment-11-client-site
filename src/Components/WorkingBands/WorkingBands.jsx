@@ -16,7 +16,7 @@ const brandsLogos = [a, b, c, d, e, f, g];
 
 const WorkingBrands = () => {
   return (
-    <div className="mt-12">
+    <div className="mt-12 px-2 md:px-0">
       <MyContainer>
         <div className="px-2 md:px-0">
           <h2 className="text-2xl md:text-4xl font-medium text-center">
@@ -45,7 +45,7 @@ const WorkingBrands = () => {
         >
           {brandsLogos.map((logo, index) => (
             <SwiperSlide key={index}>
-              <div className="flex items-center justify-center h-32 px-4">
+              <div className="flex items-center justify-center w-full h-32 px-4 border rounded-2xl">
                 <img
                   src={logo}
                   alt={`Brand ${index + 1}`}

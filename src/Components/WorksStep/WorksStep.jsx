@@ -26,7 +26,7 @@ const WorksStep = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-2 md:px-0 mt-12 text-gray-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-2 md:px-0 mt-12 text-gray-800">
           {/* Card-1 */}
           <div className="p-6 bg-white shadow-md rounded-xl hover:shadow-lg hover:-translate-y-1 transition duration-300">
             <div className="flex items-center gap-3 mb-3">

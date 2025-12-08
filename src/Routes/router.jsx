@@ -7,7 +7,7 @@ import Register from "./../Pages/Register/Register";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import AddProduct from "../Components/AddProduct/AddProduct";
 import AllProducts from "../Components/AllProducts/AllProducts";
-import ManagerRoute from "../PrivateRoutes/ManagerRoute";
+import ProductDetails from "../Components/ProductDetails/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +35,10 @@ const router = createBrowserRouter([
         path: "/add-product",
         Component: <AddProduct />,
       },
-
+      {
+        path: "/product-details/:id",
+        Component: ProductDetails,
+      },
       {
         path: "/dashboard",
         element: (

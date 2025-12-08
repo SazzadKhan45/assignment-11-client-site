@@ -1,8 +1,8 @@
-import React from "react";
 import { Link } from "react-router";
 
 const ProductsCard = ({ product }) => {
-  const { media, productName, description, price, category } = product;
+  const { media, productName, description, price, category, _id } = product;
+  // console.log(product._id);
 
   return (
     <div>
@@ -23,7 +23,10 @@ const ProductsCard = ({ product }) => {
           <h2 className="text-lg font-bold">Price : ${price}</h2>
         </div>
         <div className="px-6 w-full pb-4">
-          <Link className="bg-primary px-8 py-2 rounded-2xl ">
+          <Link
+            to={`/product-details/${_id}`}
+            className="bg-primary px-8 py-2 rounded-2xl "
+          >
             View Details
           </Link>
         </div>

@@ -18,7 +18,7 @@ const HomePageProducts = () => {
     },
   });
 
-  console.log(products);
+  // console.log(products);
 
   return (
     <div className="mt-12 px-2 md:px-0">
