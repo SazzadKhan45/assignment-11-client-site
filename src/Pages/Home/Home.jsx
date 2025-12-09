@@ -1,5 +1,7 @@
+import CustomerReviews from "../../Components/CustomerReviews/CustomerReviews";
 import HeroSlider from "../../Components/HeroSlider/HeroSlider";
 import HomePageProducts from "../../Components/HomePageProducts/HomePageProducts";
+import JoiningBonus from "../../Components/JoiningBonus/JoiningBonus";
 import WorkingBands from "../../Components/WorkingBands/WorkingBands";
 import WorksStep from "../../Components/WorksStep/WorksStep";
 import useTheme from "../../Hooks/useTheme";
@@ -21,6 +23,12 @@ const Home = () => {
 
         {/* Garments Brands */}
         <WorkingBands />
+
+        {/* Joining Bonus */}
+        <JoiningBonus />
+
+        {/* Buyer & Manger reviews */}
+        <CustomerReviews />
       </main>
     </div>
   );

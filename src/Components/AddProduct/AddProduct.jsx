@@ -1,4 +1,3 @@
-import React from "react";
 import MyContainer from "../MyContainer/MyContainer";
 
 const AddProduct = () => {

@@ -3,11 +3,13 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import MyContainer from "../MyContainer/MyContainer";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
+import useUserRole from "../../Hooks/useUserRole";
 // import useTheme from "../../Hooks/useTheme";
 
 const ProductDetails = () => {
   // Custom hook
   const axiosSecure = useAxiosSecure();
+  const { role } = useUserRole();
   //   const { isDark } = useTheme();
   const { id } = useParams();
 
@@ -21,7 +23,7 @@ const ProductDetails = () => {
     },
   });
 
-  //   console.log(product?.media);
+  console.log(product);
 
   return (
     <div className="my-16 px-2 md:px-0">
@@ -34,13 +36,14 @@ const ProductDetails = () => {
               {/* Image  */}
               <div className="flex-1 ">
                 <img
-                  className="h-[200px] md:h-[350px] lg:h-[450px] object-cover rounded"
+                  className="h-auto md:h-[350px] lg:h-[450px] object-cover rounded"
                   src={product?.media.images[1]}
                   alt=""
                 />
               </div>
+
               {/* Info  */}
-              <div className="flex-1">
+              <div className="flex-1 mt-4 md:mt-0 border-l-2 border-gray-400 pl-4">
                 <h2 className="text-xl md:text-2xl font-medium">
                   {product?.productName}
                 </h2>
@@ -60,9 +63,41 @@ const ProductDetails = () => {
                   <h3 className="font-bold text-lg">
                     Price: ${product?.price}
                   </h3>
-                  <button className="btn">{product?.category}</button>
+                  <button className="btn btn-secondary">
+                    {product?.category}
+                  </button>
                 </div>
                 {/* Button show conditionally for role */}
+                <div className="flex  justify-between items-center mt-4">
+                  {role === "manager" || role === "Admin" ? (
+                    <button className="btn btn-primary font-medium text-lg text-black">
+                      Edit Now
+                    </button>
+                  ) : (
+                    <button className="btn btn-primary font-medium text-lg text-black">
+                      Order Now
+                    </button>
+                  )}
+                  {/* Show Payment selection only buyer */}
+                  {role === "buyer" && (
+                    <div>
+                      <select
+                        defaultValue=""
+                        className="select select-success text-[14px]"
+                      >
+                        <option disabled value="">
+                          Select Payment
+                        </option>
+
+                        {product.paymentOptions.map((payment, index) => (
+                          <option key={index} value={payment}>
+                            {payment}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
