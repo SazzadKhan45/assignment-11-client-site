@@ -8,6 +8,7 @@ import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import AddProduct from "../Components/AddProduct/AddProduct";
 import AllProducts from "../Components/AllProducts/AllProducts";
 import ProductDetails from "../Components/ProductDetails/ProductDetails";
+import AdminOrManagerRoute from "../PrivateRoutes/AdminOrManagerRoute";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        Component: <AddProduct />,
+        element: (
+          <AdminOrManagerRoute>
+            {" "}
+            <AddProduct />{" "}
+          </AdminOrManagerRoute>
+        ),
       },
       {
         path: "/product-details/:id",

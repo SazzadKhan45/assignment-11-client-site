@@ -3,12 +3,12 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import MyContainer from "../MyContainer/MyContainer";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
-import useTheme from "../../Hooks/useTheme";
+// import useTheme from "../../Hooks/useTheme";
 
 const ProductDetails = () => {
   // Custom hook
   const axiosSecure = useAxiosSecure();
-  const { isDark } = useTheme();
+  //   const { isDark } = useTheme();
   const { id } = useParams();
 
   // Data loaded by tanstack Query

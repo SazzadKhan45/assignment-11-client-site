@@ -7,12 +7,14 @@ import useAuth from "./../../Hooks/useAuth";
 import { CgLogOut } from "react-icons/cg";
 import { toast } from "react-toastify";
 import LogoImg from "../../assets/Logo.png";
+import useUserRole from "../../Hooks/useUserRole";
 
 const Navbar = () => {
   //
   const { isDark, toggleTheme } = useTheme();
   //
   const { user, loading, LogoutUser } = useAuth();
+  const { role } = useUserRole();
   const navigate = useNavigate();
   // console.log(user);
 
@@ -52,30 +54,31 @@ const Navbar = () => {
       >
         All-Product
       </NavLink>
-      {/*  */}
+      {/* Check User role Admin or manager */}
+      {(role == "Admin" || role == "manager") && (
+        <NavLink
+          to="/add-product"
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#f0c14a] font-semibold underline"
+              : "hover:text-[#eeb62a]"
+          }
+        >
+          Add-Product
+        </NavLink>
+      )}
+      {/* User check  */}
       {user && (
-        <>
-          <NavLink
-            to="/add-product"
-            className={({ isActive }) =>
-              isActive
-                ? "text-[#f0c14a] font-semibold underline"
-                : "hover:text-[#eeb62a]"
-            }
-          >
-            Add-Product
-          </NavLink>
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
-              isActive
-                ? "text-[#f0c14a] font-semibold underline"
-                : "hover:text-[#eeb62a]"
-            }
-          >
-            Dashboard
-          </NavLink>
-        </>
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#f0c14a] font-semibold underline"
+              : "hover:text-[#eeb62a]"
+          }
+        >
+          Dashboard
+        </NavLink>
       )}
 
       {!user && (
