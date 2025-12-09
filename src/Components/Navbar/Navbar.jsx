@@ -52,7 +52,7 @@ const Navbar = () => {
             : "hover:text-[#eeb62a]"
         }
       >
-        All-Product
+        All-Products
       </NavLink>
       {/* Check User role Admin or manager */}
       {(role == "Admin" || role == "manager") && (

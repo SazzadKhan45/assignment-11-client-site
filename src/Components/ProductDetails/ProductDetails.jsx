@@ -37,7 +37,7 @@ const ProductDetails = () => {
               <div className="flex-1 ">
                 <img
                   className="h-auto md:h-[350px] lg:h-[450px] object-cover rounded"
-                  src={product?.media.images[1]}
+                  src={product?.media.images[0]}
                   alt=""
                 />
               </div>

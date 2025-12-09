@@ -1,6 +1,5 @@
-import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
-import Login from "../../Pages/Login/Login";
+import Footer from "../../Components/Footer/Footer";
 import { Outlet } from "react-router";
 
 const AuthLayout = () => {
@@ -15,7 +14,7 @@ const AuthLayout = () => {
       </main>
       {/* Footer */}
       <footer className="mt-10">
-        <h2>Footer</h2>
+        <Footer />
       </footer>
     </div>
   );
