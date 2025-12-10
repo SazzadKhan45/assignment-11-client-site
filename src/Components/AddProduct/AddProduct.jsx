@@ -264,9 +264,11 @@ const AddProduct = () => {
                   })}
                   className="w-full border rounded px-3 py-2"
                 >
-                  <option value="">Select Category</option>
+                  <option className="text-black" value="">
+                    Select Category
+                  </option>
                   {categories.map((cat) => (
-                    <option key={cat} value={cat}>
+                    <option className="text-black" key={cat} value={cat}>
                       {cat}
                     </option>
                   ))}
@@ -288,9 +290,11 @@ const AddProduct = () => {
                   })}
                   className="w-full border rounded px-3 py-2"
                 >
-                  <option value="">Select Payment Option</option>
+                  <option className="text-black" value="">
+                    Select Payment Option
+                  </option>
                   {paymentOptions.map((opt) => (
-                    <option key={opt} value={opt}>
+                    <option className="text-black" key={opt} value={opt}>
                       {opt}
                     </option>
                   ))}
@@ -325,7 +329,7 @@ const AddProduct = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-primary text-white px-10 py-2 rounded hover:bg-blue-700 transition"
+                className="bg-primary text-white px-10 py-2 rounded cursor-pointer"
               >
                 Add Product
               </button>

@@ -9,6 +9,8 @@ import AddProduct from "../Components/AddProduct/AddProduct";
 import AllProducts from "../Components/AllProducts/AllProducts";
 import ProductDetails from "../Components/ProductDetails/ProductDetails";
 import AdminOrManagerRoute from "../PrivateRoutes/AdminOrManagerRoute";
+import DashBoard from "../Layouts/DashBoard/DashBoard";
+import AllProductsTable from "../Components/DashBoardComponents/AllProductsTable";
 
 const router = createBrowserRouter([
   {
@@ -45,14 +47,6 @@ const router = createBrowserRouter([
         path: "/product-details/:id",
         Component: ProductDetails,
       },
-      {
-        path: "/dashboard",
-        element: (
-          <PrivateRoutes>
-            <h2>Hello world</h2>{" "}
-          </PrivateRoutes>
-        ),
-      },
     ],
   },
 
@@ -69,6 +63,24 @@ const router = createBrowserRouter([
       {
         path: "register",
         Component: Register,
+      },
+    ],
+  },
+
+  // DashBoard Route
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoutes>
+        {" "}
+        <DashBoard />{" "}
+      </PrivateRoutes>
+    ),
+    errorElement: <h2>Something went wrong!</h2>,
+    children: [
+      {
+        path: "all-products",
+        Component: AllProductsTable,
       },
     ],
   },
