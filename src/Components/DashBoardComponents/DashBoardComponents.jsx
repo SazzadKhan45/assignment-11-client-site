@@ -35,6 +35,7 @@ const DashBoardComponents = () => {
       {/* User List */}
       <li className="border-b-2 border-primary text-[15px]">
         <Link
+          to="/dashboard/user-collections"
           className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
           data-tip="Manage Users"
         >
