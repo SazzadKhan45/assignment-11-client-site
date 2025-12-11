@@ -12,6 +12,8 @@ import AdminOrManagerRoute from "../PrivateRoutes/AdminOrManagerRoute";
 import DashBoard from "../Layouts/DashBoard/DashBoard";
 import AllProductsTable from "../Components/DashBoardComponents/AllProductsTable";
 import UserCollections from "../Components/DashBoardComponents/UserCollections";
+import ManagerProducts from "../Components/DashBoardComponents/ManagerProducts";
+import BuyerOrder from "../Components/DashBoardComponents/BuyerOrder";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +88,14 @@ const router = createBrowserRouter([
       {
         path: "user-collections",
         Component: UserCollections,
+      },
+      {
+        path: "manager-products",
+        Component: ManagerProducts,
+      },
+      {
+        path: "buyer-order",
+        Component: BuyerOrder,
       },
     ],
   },

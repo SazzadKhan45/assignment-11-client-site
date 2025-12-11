@@ -1,8 +1,13 @@
 import { AiFillProduct } from "react-icons/ai";
 import { FaCartPlus, FaUserFriends } from "react-icons/fa";
 import { Link } from "react-router";
+import useUserRole from "./../../Hooks/useUserRole";
 
 const DashBoardComponents = () => {
+  // Custom hooks
+  const { role } = useUserRole();
+
+  //
   return (
     <div className="grow space-y-3">
       {/* Sidebar content here */}
@@ -33,38 +38,57 @@ const DashBoardComponents = () => {
       </li>
 
       {/* User List */}
-      <li className="border-b-2 border-primary text-[15px]">
-        <Link
-          to="/dashboard/user-collections"
-          className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-          data-tip="Manage Users"
-        >
-          {/* User icon */}
-          <FaUserFriends size={20} />
-          <span className="is-drawer-close:hidden">Manage Users</span>
-        </Link>
-      </li>
+      {role === "Admin" && (
+        <>
+          <li className="border-b-2 border-primary text-[15px]">
+            <Link
+              to="/dashboard/user-collections"
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="Manage Users"
+            >
+              <FaUserFriends size={20} />
+              <span className="is-drawer-close:hidden">Manage Users</span>
+            </Link>
+          </li>
+
+          {/* All Products List */}
+          <li className="border-b-2 border-primary text-[15px]">
+            <Link
+              to="/dashboard/all-products"
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="All Products"
+            >
+              <AiFillProduct size={20} />
+              <span className="is-drawer-close:hidden">All Products</span>
+            </Link>
+          </li>
+        </>
+      )}
+
+      {/*  */}
+      {role === "manager" && (
+        <li className="border-b-2 border-primary text-[15px]">
+          <Link
+            to="/dashboard/manager-products"
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+            data-tip="My Products"
+          >
+            <AiFillProduct size={20} />
+            <span className="is-drawer-close:hidden">My Products</span>
+          </Link>
+        </li>
+      )}
+
       {/* All Products List */}
       <li className="border-b-2 border-primary text-[15px]">
         <Link
-          to="/dashboard/all-products"
+          to="/dashboard/buyer-order"
           className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-          data-tip="All Products"
-        >
-          {/* Products icon */}
-          <AiFillProduct size={20} />
-          <span className="is-drawer-close:hidden">All Products</span>
-        </Link>
-      </li>
-      {/* All Products List */}
-      <li className="border-b-2 border-primary text-[15px]">
-        <Link
-          className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-          data-tip="All Orders"
+          data-tip="My Orders"
         >
           {/* Products icon */}
           <FaCartPlus size={20} />
-          <span className="is-drawer-close:hidden">All Orders</span>
+          <span className="is-drawer-close:hidden">My Orders</span>
         </Link>
       </li>
     </div>

@@ -1,28 +1,37 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Loading from "../Loading/Loading";
 import Swal from "sweetalert2";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
-const AllProductsTable = () => {
-  //
+const ManagerProducts = () => {
+  // Custom hooks
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
+  // TanStack Query v5
   const {
-    isPending,
     data: products = [],
+    isLoading,
+    error,
     refetch,
   } = useQuery({
-    queryKey: ["All-Product"],
+    queryKey: ["Manager-products", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `/all-product-data?email=${user?.email}`
+        `/manager-product?email=${user?.email}`
       );
       return res.data.data;
     },
+    enabled: !!user?.email,
   });
+
+  // Loading state
+  if (isLoading) return <Loading />;
+
+  // Error state
+  if (error) return <p>Failed to load products.</p>;
 
   // handle product delete
   const handleProductDelete = async (id) => {
@@ -61,53 +70,48 @@ const AllProductsTable = () => {
   };
 
   //
+  console.log(products);
 
   return (
     <div>
-      <div className="overflow-x-auto">
-        <div className="bg-primary py-2 mb-4">
-          <h2 className="text-xl font-medium text-center">
-            All Products List Table
-          </h2>
-        </div>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Price & Quantity</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {isPending ? (
+      <div className="bg-primary py-2 mb-4">
+        <h2 className="text-xl font-medium text-center">
+          My Products List Table
+        </h2>
+      </div>
+      {/* My products data table */}
+      <div>
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
               <tr>
-                <td colSpan={4}>
-                  <Loading />
-                </td>
+                <th>#</th>
+                <th>Products Images</th>
+                <th>Products Info</th>
+                <th>Actions</th>
               </tr>
-            ) : (
-              products.map((p, index) => (
-                <tr key={p._id}>
-                  <th>{index + 1}</th>
-                  <td className="flex items-center gap-3">
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              {products.map((product, idx) => (
+                <tr key={product._id}>
+                  <th>{idx + 1}</th>
+                  <td>
                     <div className="mask mask-squircle h-12 w-12">
-                      <img src={p?.media?.images[0]} />
-                    </div>
-                    <div>
-                      <h2 className="font-medium">{p?.productName}</h2>
-                      <p>{p?.category}</p>
+                      <img src={product.media.images[0]} />
                     </div>
                   </td>
                   <td>
-                    <h2 className="font-medium">
-                      ${p?.price} {p?.currency}
-                    </h2>
-                    <p>Units: {p?.availableQuantity}</p>
+                    <h3 className="font-medium">
+                      Name: {product?.productName}
+                    </h3>
+                    <p className="font-bold">Price: {product?.price}</p>
+                    <p>Id: {product?._id}</p>
                   </td>
                   <td>
                     <button
-                      onClick={() => handleEditProduct(p?._id)}
+                      onClick={() => handleEditProduct(product?._id)}
                       className="btn btn-sm mr-2 bg-primary tooltip"
                       data-tip="Edit"
                     >
@@ -115,7 +119,7 @@ const AllProductsTable = () => {
                     </button>
                     {/* Delete product */}
                     <button
-                      onClick={() => handleProductDelete(p?._id)}
+                      onClick={() => handleProductDelete(product?._id)}
                       className="btn btn-sm tooltip"
                       data-tip="Remove"
                     >
@@ -123,13 +127,13 @@ const AllProductsTable = () => {
                     </button>
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
 };
 
-export default AllProductsTable;
+export default ManagerProducts;

@@ -1,6 +1,10 @@
 import { Link } from "react-router";
+import useAuth from "../../Hooks/useAuth";
 
 const ProductsCard = ({ product }) => {
+  // Call hooks
+  const { user } = useAuth();
+
   const { media, productName, description, price, category, _id } = product;
   // console.log(product._id);
 
@@ -23,12 +27,21 @@ const ProductsCard = ({ product }) => {
           <h2 className="text-lg font-bold">Price : ${price}</h2>
         </div>
         <div className="px-6 w-full pb-4">
-          <Link
-            to={`/product-details/${_id}`}
-            className="bg-primary px-8 py-2 rounded-2xl "
-          >
-            View Details
-          </Link>
+          {user ? (
+            <Link
+              to={`/product-details/${_id}`}
+              className="bg-primary px-8 py-2 rounded-2xl "
+            >
+              View Details
+            </Link>
+          ) : (
+            <Link
+              to="/auth/register"
+              className="bg-primary px-8 py-2 rounded-2xl "
+            >
+              View Details
+            </Link>
+          )}
         </div>
       </div>
     </div>

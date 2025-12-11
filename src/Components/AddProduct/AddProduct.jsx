@@ -65,7 +65,7 @@ const AddProduct = () => {
       supplierEmail: data.email,
       media: { images: uploadedImageURLs },
       createdAt: new Date(),
-      paymentOptions: data.payment,
+      paymentOptions: [data.payment],
       orderButton: {
         visibleForRoles: ["manager"],
         requiresVerifiedAccount: false,

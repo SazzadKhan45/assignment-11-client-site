@@ -1,33 +1,25 @@
-Completed List
+Order / Booking Button:
+Enabled only for logged-in users who are not Admin or Manager
+Clicking it redirects the user to the Booking Page / Order Form
+Booking Form Fields:
+Email (auto-filled for logged-in users, read-only)
+Product Title (read-only)
+Price / Payment Info (read-only)
+First Name
+Last Name
+order quantity . cannot be larger than product quantity ,, can not be less then minimum quantity
+order price ( read-only field , it will calculated automatically when quantity added
+Contact Number
+Delivery Address
+Additional Notes / Instructions
 
-1. Login Page
-2. Register Page
-3. Navbar
+Behavior:
+The Product Title and Price / Payment Info are displayed based on the selected product (read-only).
 
-4. Product Details Page (Private Route)
-   This page displays detailed information about a specific product selected from the All Products page.
-   Information Displayed:
-   Product Image(s) / Demo Video
-   Product Name / Title
-   Product Description
-   Category
-   Price
-   Available Quantity
-   minimum order
-   Payment Options (as selected by Manager)
-   Order / Booking Button (role & account status dependent)
+Upon submission:
 
-5. Home Page Requirements
-   Create a modern, eye-catching landing page with smooth Framer-Motion animations, clean UX, and real backend integration (MongoDB).
+If payment is required (e.g., online payment via Stripe / PayFast), redirect to the payment page.
+If no online payment is required (e.g., Cash on Delivery), skip the payment step.
 
-Hero Banner
-A visually appealing section with a meaningful image, descriptive text, and a clear call-to-action button (like View Product, Book a Product, etc., also clickable).
-Our Products (6 cards from MongoDB with limit)
-Cards include image, name, short desc, price
-“View Details” button
-How It Works (Step-by-step)
-Customer Feedback (Carousel)
-
-Add 2 Extra section Design
-
-🎯 When the user clicks the "View Details" button, they are redirected to the product details page.
+Save the booking / registration details in the database.
+Display the booking on Dashboard → My Orders page for the user.

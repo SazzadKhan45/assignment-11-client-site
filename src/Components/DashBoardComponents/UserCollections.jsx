@@ -74,6 +74,9 @@ const UserCollections = () => {
 
   return (
     <div className="overflow-x-auto">
+      <div className="bg-primary py-2 mb-4">
+        <h2 className="text-xl font-medium text-center">All User List Table</h2>
+      </div>
       <table className="table">
         {/* head */}
         <thead>
