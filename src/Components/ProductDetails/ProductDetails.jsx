@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import MyContainer from "../MyContainer/MyContainer";
 import { useQuery } from "@tanstack/react-query";
@@ -74,28 +74,12 @@ const ProductDetails = () => {
                       Edit Now
                     </button>
                   ) : (
-                    <button className="btn btn-primary font-medium text-lg text-black">
+                    <Link
+                      to={`/order-product/${product?._id}`}
+                      className="btn btn-primary font-medium text-lg text-black"
+                    >
                       Order Now
-                    </button>
-                  )}
-                  {/* Show Payment selection only buyer */}
-                  {role === "buyer" && (
-                    <div>
-                      <select
-                        defaultValue=""
-                        className="select select-success text-[14px]"
-                      >
-                        <option disabled value="">
-                          Select Payment
-                        </option>
-
-                        {product.paymentOptions.map((payment, index) => (
-                          <option key={index} value={payment}>
-                            {payment}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                    </Link>
                   )}
                 </div>
               </div>

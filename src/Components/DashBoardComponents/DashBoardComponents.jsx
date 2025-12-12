@@ -62,35 +62,61 @@ const DashBoardComponents = () => {
               <span className="is-drawer-close:hidden">All Products</span>
             </Link>
           </li>
+          <li className="border-b-2 border-primary text-[15px]">
+            <Link
+              to="/dashboard/all-orders"
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="All Orders"
+            >
+              {/* Products icon */}
+              <FaCartPlus size={20} />
+              <span className="is-drawer-close:hidden">All Orders</span>
+            </Link>
+          </li>
         </>
       )}
 
       {/*  */}
       {role === "manager" && (
-        <li className="border-b-2 border-primary text-[15px]">
-          <Link
-            to="/dashboard/manager-products"
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-            data-tip="My Products"
-          >
-            <AiFillProduct size={20} />
-            <span className="is-drawer-close:hidden">My Products</span>
-          </Link>
-        </li>
+        <>
+          <li className="border-b-2 border-primary text-[15px]">
+            <Link
+              to="/dashboard/manager-products"
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="My Products"
+            >
+              <AiFillProduct size={20} />
+              <span className="is-drawer-close:hidden">My Products</span>
+            </Link>
+          </li>
+          <li className="border-b-2 border-primary text-[15px]">
+            <Link
+              to="/dashboard/manager-order"
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="My Orders"
+            >
+              {/* Products icon */}
+              <FaCartPlus size={20} />
+              <span className="is-drawer-close:hidden">My Orders</span>
+            </Link>
+          </li>
+        </>
       )}
 
       {/* All Products List */}
-      <li className="border-b-2 border-primary text-[15px]">
-        <Link
-          to="/dashboard/buyer-order"
-          className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-          data-tip="My Orders"
-        >
-          {/* Products icon */}
-          <FaCartPlus size={20} />
-          <span className="is-drawer-close:hidden">My Orders</span>
-        </Link>
-      </li>
+      {role === "buyer" && (
+        <li className="border-b-2 border-primary text-[15px]">
+          <Link
+            to="/dashboard/buyer-order"
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+            data-tip="My Orders"
+          >
+            {/* Products icon */}
+            <FaCartPlus size={20} />
+            <span className="is-drawer-close:hidden">My Orders</span>
+          </Link>
+        </li>
+      )}
     </div>
   );
 };

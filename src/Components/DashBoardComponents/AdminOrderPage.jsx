@@ -1,37 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../Hooks/useAuth";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import Loading from "../Loading/Loading";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAuth from "../../Hooks/useAuth";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Loading from "../Loading/Loading";
 
-const ManagerProducts = () => {
-  // Custom hooks
+const AdminOrderPage = () => {
+  //
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  // TanStack Query v5
   const {
+    isPending,
     data: products = [],
-    isLoading,
-    error,
     refetch,
   } = useQuery({
-    queryKey: ["Manager-products", user?.email],
+    queryKey: ["All-Product"],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `/manager-product?email=${user?.email}`
+        `/all-order-admin?email=${user?.email}`
       );
       return res.data.data;
     },
-    enabled: !!user?.email,
   });
 
-  // Loading state
-  if (isLoading) return <Loading />;
-
-  // Error state
-  if (error) return <p>Failed to load products.</p>;
+  console.log(products);
 
   // handle product delete
   const handleProductDelete = async (id) => {
@@ -48,7 +41,7 @@ const ManagerProducts = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         // DELETE only after confirmation
-        await axiosSecure.delete(`/product/${id}`);
+        await axiosSecure.delete(`/order/${id}`);
 
         Swal.fire({
           title: "Deleted!",
@@ -70,48 +63,56 @@ const ManagerProducts = () => {
   };
 
   //
-  console.log(products);
 
   return (
     <div>
-      <div className="bg-primary py-2 mb-4">
-        <h2 className="text-xl font-medium text-center">
-          My Products List Table
-        </h2>
-      </div>
-      {/* My products data table */}
-      <div>
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
+      <div className="overflow-x-auto">
+        <div className="bg-primary py-2 mb-4">
+          <h2 className="text-xl font-medium text-center">
+            All Products List Table
+          </h2>
+        </div>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Price & Quantity</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {isPending ? (
               <tr>
-                <th>#</th>
-                <th>Products Images</th>
-                <th>Products Info</th>
-                <th>Actions</th>
+                <td colSpan={4}>
+                  <Loading />
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {/* row 1 */}
-              {products.map((product, idx) => (
-                <tr key={product._id}>
-                  <th>{idx + 1}</th>
-                  <td>
-                    <div className="mask mask-squircle h-12 w-12">
-                      <img src={product.media.images[0]} />
+            ) : (
+              products.map((p, index) => (
+                <tr key={p._id}>
+                  <th>{index + 1}</th>
+                  <td className="flex items-center gap-3">
+                    <div className="h-12 w-12 object-cover">
+                      <img
+                        className="object-cover rounded-lg w-full h-full"
+                        src={p?.images}
+                      />
+                    </div>
+                    <div>
+                      <h2 className="font-medium">{p?.productName}</h2>
+                      <p>{p?.category}</p>
                     </div>
                   </td>
                   <td>
-                    <h3 className="font-medium">
-                      Name: {product?.productName}
-                    </h3>
-                    <p className="font-bold">Price: {product?.price}</p>
-                    <p>{product?.paymentOptions}</p>
+                    <h2 className="font-medium">
+                      ${p?.price} {p?.currency}
+                    </h2>
+                    <p>Units: {p?.availableQuantity}</p>
                   </td>
                   <td>
                     <button
-                      onClick={() => handleEditProduct(product?._id)}
+                      onClick={() => handleEditProduct(p?._id)}
                       className="btn btn-sm mr-2 bg-primary tooltip"
                       data-tip="Edit"
                     >
@@ -119,7 +120,7 @@ const ManagerProducts = () => {
                     </button>
                     {/* Delete product */}
                     <button
-                      onClick={() => handleProductDelete(product?._id)}
+                      onClick={() => handleProductDelete(p?._id)}
                       className="btn btn-sm tooltip"
                       data-tip="Remove"
                     >
@@ -127,13 +128,13 @@ const ManagerProducts = () => {
                     </button>
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              ))
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
 
-export default ManagerProducts;
+export default AdminOrderPage;

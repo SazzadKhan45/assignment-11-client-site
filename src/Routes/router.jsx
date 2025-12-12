@@ -13,7 +13,10 @@ import DashBoard from "../Layouts/DashBoard/DashBoard";
 import AllProductsTable from "../Components/DashBoardComponents/AllProductsTable";
 import UserCollections from "../Components/DashBoardComponents/UserCollections";
 import ManagerProducts from "../Components/DashBoardComponents/ManagerProducts";
-import BuyerOrder from "../Components/DashBoardComponents/BuyerOrder";
+import OrderPage from "../Components/OrderPage/OrderPage";
+import AdminOrderPage from "../Components/DashBoardComponents/AdminOrderPage";
+import ManagerOrder from "../Components/DashBoardComponents/ManagerOrder";
+import BuyerOrderPage from "./../Components/DashBoardComponents/BuyerOrderPage";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/product-details/:id",
         Component: ProductDetails,
+      },
+      {
+        path: "/order-product/:id",
+        Component: OrderPage,
       },
     ],
   },
@@ -95,7 +102,15 @@ const router = createBrowserRouter([
       },
       {
         path: "buyer-order",
-        Component: BuyerOrder,
+        Component: BuyerOrderPage,
+      },
+      {
+        path: "all-orders",
+        Component: AdminOrderPage,
+      },
+      {
+        path: "manager-order",
+        Component: ManagerOrder,
       },
     ],
   },

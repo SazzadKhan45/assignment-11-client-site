@@ -76,7 +76,7 @@ const AddProduct = () => {
 
     //  Data save in the database
     try {
-      const res = await axiosSecure.post("/all-products", productInfo);
+      const res = await axiosSecure.post("/single-product", productInfo);
       toast.success("Successfully Upload Product");
       reset(); // now this will run
 
