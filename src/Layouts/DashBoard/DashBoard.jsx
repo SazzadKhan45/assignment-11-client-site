@@ -1,12 +1,29 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 
 import useTheme from "./../../Hooks/useTheme";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import DashBoardComponents from "../../Components/DashBoardComponents/DashBoardComponents";
+import useAuth from "../../Hooks/useAuth";
+import { toast } from "react-toastify";
+import { CgLogOut } from "react-icons/cg";
 
 const DashBoard = () => {
   // Custom hooks
   const { isDark, toggleTheme } = useTheme();
+  const { user, LogoutUser } = useAuth();
+  const navigate = useNavigate();
+
+  // handle logOut user
+  const handleLogoutUser = () => {
+    LogoutUser()
+      .then(() => {
+        toast.success("Logout Successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -38,20 +55,61 @@ const DashBoard = () => {
             </label>
 
             <div className="px-4 ml-auto">
-              <div className="ml-2">
-                {isDark ? (
-                  <div className="text-[#b99c5d] cursor-pointer btn btn-sm">
-                    <IoMdMoon size={20} onClick={toggleTheme} />
+              <div className="flex items-center gap-2">
+                <div className="dropdown dropdown-end">
+                  <div tabIndex={0} role="button">
+                    <div className="h-12 w-12 rounded-full overflow-hidden border cursor-pointer">
+                      <img
+                        src={user?.photoURL}
+                        alt="Profile"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
                   </div>
-                ) : (
-                  <div className="cursor-pointer btn btn-sm">
-                    <IoMdSunny
-                      size={20}
-                      className="text-orange-400"
-                      onClick={toggleTheme}
-                    />
-                  </div>
-                )}
+                  <ul
+                    tabIndex="-1"
+                    className="dropdown-content menu bg-gray-500 rounded-box z-1 w-52 p-2 shadow-sm mt-2 text-white"
+                  >
+                    <div className="mx-auto pt-4">
+                      <div className="h-12 w-12 rounded-full overflow-hidden border cursor-pointer">
+                        <img
+                          src={user?.photoURL}
+                          alt="Profile"
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="pt-2">
+                      <p className="text-center font-medium">
+                        Name: {user?.displayName}
+                      </p>
+                    </div>
+
+                    <li className="px-6">
+                      <button
+                        onClick={handleLogoutUser}
+                        className="bg-gray-800 my-3 font-bold flex items-center justify-center gap-2 w-full text-white py-2 rounded"
+                      >
+                        LogOut <CgLogOut size={20} />
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div className="ml-2">
+                  {isDark ? (
+                    <div className="text-[#b99c5d] cursor-pointer btn btn-sm">
+                      <IoMdMoon size={20} onClick={toggleTheme} />
+                    </div>
+                  ) : (
+                    <div className="cursor-pointer btn btn-sm">
+                      <IoMdSunny
+                        size={20}
+                        className="text-orange-400"
+                        onClick={toggleTheme}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </nav>
