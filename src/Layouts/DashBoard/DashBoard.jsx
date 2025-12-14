@@ -6,11 +6,14 @@ import DashBoardComponents from "../../Components/DashBoardComponents/DashBoardC
 import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { CgLogOut } from "react-icons/cg";
+// import useUserRole from "../../Hooks/useUserRole";
 
 const DashBoard = () => {
   // Custom hooks
   const { isDark, toggleTheme } = useTheme();
   const { user, LogoutUser } = useAuth();
+  // const { role } = useUserRole();
+  // Navigate hook
   const navigate = useNavigate();
 
   // handle logOut user
@@ -116,6 +119,25 @@ const DashBoard = () => {
 
           {/* Page content here & Outlet */}
           <div className="p-4">
+            {/* User Profile */}
+            {/* {role == "Admin" && (
+              <>
+                <h2>Admin Profile</h2>
+              </>
+            )} */}
+            {/* User Profile */}
+            {/* {role == "manager" && (
+              <>
+                <h2>Manager Profile</h2>
+              </>
+            )} */}
+            {/* User Profile */}
+            {/* {role == "buyer" && (
+              <>
+                <h2>Buyer Profile</h2>
+              </>
+            )} */}
+
             <Outlet />
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { AiFillProduct } from "react-icons/ai";
 import { FaCartPlus, FaUserFriends } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import useUserRole from "./../../Hooks/useUserRole";
 
 const DashBoardComponents = () => {
@@ -41,37 +41,45 @@ const DashBoardComponents = () => {
       {role === "Admin" && (
         <>
           <li className="border-b-2 border-primary text-[15px]">
-            <Link
+            <NavLink
               to="/dashboard/user-collections"
-              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-              data-tip="Manage Users"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#eeb62a]"
+              }
             >
               <FaUserFriends size={20} />
               <span className="is-drawer-close:hidden">Manage Users</span>
-            </Link>
+            </NavLink>
           </li>
 
           {/* All Products List */}
           <li className="border-b-2 border-primary text-[15px]">
-            <Link
+            <NavLink
               to="/dashboard/all-products"
-              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-              data-tip="All Products"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#eeb62a]"
+              }
             >
               <AiFillProduct size={20} />
               <span className="is-drawer-close:hidden">All Products</span>
-            </Link>
+            </NavLink>
           </li>
           <li className="border-b-2 border-primary text-[15px]">
-            <Link
+            <NavLink
               to="/dashboard/all-orders"
-              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-              data-tip="All Orders"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#eeb62a]"
+              }
             >
-              {/* Products icon */}
               <FaCartPlus size={20} />
               <span className="is-drawer-close:hidden">All Orders</span>
-            </Link>
+            </NavLink>
           </li>
         </>
       )}
@@ -80,25 +88,30 @@ const DashBoardComponents = () => {
       {role === "manager" && (
         <>
           <li className="border-b-2 border-primary text-[15px]">
-            <Link
+            <NavLink
               to="/dashboard/manager-products"
-              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-              data-tip="My Products"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#eeb62a]"
+              }
             >
               <AiFillProduct size={20} />
               <span className="is-drawer-close:hidden">My Products</span>
-            </Link>
+            </NavLink>
           </li>
           <li className="border-b-2 border-primary text-[15px]">
-            <Link
+            <NavLink
               to="/dashboard/manager-order"
-              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-              data-tip="My Orders"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#eeb62a]"
+              }
             >
-              {/* Products icon */}
               <FaCartPlus size={20} />
               <span className="is-drawer-close:hidden">My Orders</span>
-            </Link>
+            </NavLink>
           </li>
         </>
       )}
@@ -106,15 +119,16 @@ const DashBoardComponents = () => {
       {/* All Products List */}
       {role === "buyer" && (
         <li className="border-b-2 border-primary text-[15px]">
-          <Link
+          <NavLink
             to="/dashboard/buyer-order"
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-            data-tip="My Orders"
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#f0c14a] font-semibold underline"
+                : "hover:text-[#eeb62a]"
+            }
           >
-            {/* Products icon */}
             <FaCartPlus size={20} />
-            <span className="is-drawer-close:hidden">My Orders</span>
-          </Link>
+          </NavLink>
         </li>
       )}
     </div>
