@@ -13,7 +13,7 @@ const AddProduct = () => {
   const { user } = useAuth();
   const { isDark } = useTheme();
   const axiosSecure = useAxiosSecure();
-  // console.log(user);
+  console.log(user);
 
   const {
     register,
@@ -51,6 +51,9 @@ const AddProduct = () => {
 
       uploadedImageURLs.push(uploadRes.data.data.display_url);
     }
+
+    const token = user?.accessToken;
+    console.log(token);
 
     // ProductData info
     const productInfo = {

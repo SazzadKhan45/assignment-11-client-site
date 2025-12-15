@@ -5,7 +5,15 @@ const ProductsCard = ({ product }) => {
   // Call hooks
   const { user } = useAuth();
 
-  const { media, productName, description, price, category, _id } = product;
+  const {
+    media,
+    productName,
+    description,
+    price,
+    category,
+    availableQuantity,
+    _id,
+  } = product;
   // console.log(product._id);
 
   return (
@@ -21,26 +29,36 @@ const ProductsCard = ({ product }) => {
         <div className="card-body">
           <h2 className="card-title">{productName}</h2>
           <p className="text-justify text-gray-500">{description}</p>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline">{category}</div>
+          <div className="flex items-center text-[15px]">
+            <p className="">
+              <span className="underline">Available: </span>
+              <span className="font-medium">{availableQuantity} </span>Units
+            </p>
+            <p className="badge badge-outline">{category}</p>
           </div>
-          <h2 className="text-lg font-bold">Price : ${price}</h2>
+          <div className="">
+            <h2 className="text-lg font-bold">Price : ${price}</h2>
+          </div>
         </div>
-        <div className="px-6 w-full pb-4">
+        <div className="px-6 w-full pb-4 text-lg">
           {user ? (
-            <Link
-              to={`/product-details/${_id}`}
-              className="bg-primary px-8 py-2 rounded-2xl "
-            >
-              View Details
-            </Link>
+            <div className="flex text-center">
+              <Link
+                to={`/product-details/${_id}`}
+                className="bg-primary py-2 rounded-2xl w-full"
+              >
+                View Details
+              </Link>
+            </div>
           ) : (
-            <Link
-              to="/auth/register"
-              className="bg-primary px-8 py-2 rounded-2xl "
-            >
-              View Details
-            </Link>
+            <div className="flex text-center">
+              <Link
+                to="/auth/register"
+                className="bg-primary py-2 rounded-2xl "
+              >
+                View Details
+              </Link>
+            </div>
           )}
         </div>
       </div>

@@ -1,5 +1,3 @@
-import React from "react";
-import { FaEdit, FaTrash } from "react-icons/fa";
 import Loading from "../Loading/Loading";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
@@ -28,7 +26,7 @@ const ManagerOrder = () => {
     },
   });
 
-  console.log(products);
+  // console.log(products);
 
   // handle order approved
   const handleOrderApprove = async (id) => {

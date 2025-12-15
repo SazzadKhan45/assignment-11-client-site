@@ -55,8 +55,13 @@ const DashBoard = () => {
                 <path d="M9 4v16"></path>
                 <path d="M14 10l2 2l-2 2"></path>
               </svg>
+              {/* User role show  */}
             </label>
 
+            <div>
+              <h2 className="text-center">DashBoard</h2>
+            </div>
+            {/* User Profile */}
             <div className="px-4 ml-auto">
               <div className="flex items-center gap-2">
                 <div className="dropdown dropdown-end">

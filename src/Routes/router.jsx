@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         Component: AllProducts,
       },
       {
-        path: "/blogs",
+        path: "/about-us",
         element: <h2>Hello world</h2>,
       },
       {

@@ -69,9 +69,10 @@ const OrderPage = () => {
       supplierEmail: product.supplierEmail,
       paymentOptions: data.payment,
       Quantity: data.orderUnit,
+      contact: data.contactNumber,
     };
 
-    // console.log(orderInfo);
+    console.log(orderInfo);
 
     //
     Swal.fire({
@@ -230,6 +231,31 @@ const OrderPage = () => {
                     {errors.address.message}
                   </p>
                 )}
+              </div>
+            </div>
+            {/* Contact info */}
+            <div className="md:flex justify-between items-center gap-6">
+              {/*  */}
+              <div className="flex-1 w-full">
+                <label className="block font-medium mb-1">Your Number</label>
+                <input
+                  type="text"
+                  {...register("contactNumber", {
+                    required: "Contact Number is required",
+                  })}
+                  className="w-full border rounded px-3 py-2"
+                  placeholder="Enter Your Number"
+                />
+              </div>
+              {/*  */}
+              <div className="flex-1 w-full">
+                <label className="block font-medium mb-1">Instructions </label>
+                <input
+                  type="text"
+                  {...register("instructions")}
+                  className="w-full border rounded px-3 py-2"
+                  placeholder="Enter Your Instructions"
+                />
               </div>
             </div>
 

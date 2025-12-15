@@ -46,8 +46,9 @@ const DashBoardComponents = () => {
               className={({ isActive }) =>
                 isActive
                   ? "text-[#f0c14a] font-semibold underline"
-                  : "hover:text-[#eeb62a]"
+                  : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
               }
+              data-tip="Manage Users"
             >
               <FaUserFriends size={20} />
               <span className="is-drawer-close:hidden">Manage Users</span>
@@ -61,8 +62,9 @@ const DashBoardComponents = () => {
               className={({ isActive }) =>
                 isActive
                   ? "text-[#f0c14a] font-semibold underline"
-                  : "hover:text-[#eeb62a]"
+                  : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
               }
+              data-tip="All Products"
             >
               <AiFillProduct size={20} />
               <span className="is-drawer-close:hidden">All Products</span>
@@ -74,8 +76,9 @@ const DashBoardComponents = () => {
               className={({ isActive }) =>
                 isActive
                   ? "text-[#f0c14a] font-semibold underline"
-                  : "hover:text-[#eeb62a]"
+                  : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
               }
+              data-tip="All Orders"
             >
               <FaCartPlus size={20} />
               <span className="is-drawer-close:hidden">All Orders</span>
@@ -93,8 +96,9 @@ const DashBoardComponents = () => {
               className={({ isActive }) =>
                 isActive
                   ? "text-[#f0c14a] font-semibold underline"
-                  : "hover:text-[#eeb62a]"
+                  : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
               }
+              data-tip="My Products"
             >
               <AiFillProduct size={20} />
               <span className="is-drawer-close:hidden">My Products</span>
@@ -106,8 +110,9 @@ const DashBoardComponents = () => {
               className={({ isActive }) =>
                 isActive
                   ? "text-[#f0c14a] font-semibold underline"
-                  : "hover:text-[#eeb62a]"
+                  : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
               }
+              data-tip="My Orders"
             >
               <FaCartPlus size={20} />
               <span className="is-drawer-close:hidden">My Orders</span>
@@ -124,10 +129,12 @@ const DashBoardComponents = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-[#f0c14a] font-semibold underline"
-                : "hover:text-[#eeb62a]"
+                : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
             }
+            data-tip="My Orders"
           >
             <FaCartPlus size={20} />
+            <span className="is-drawer-close:hidden">My Orders</span>
           </NavLink>
         </li>
       )}

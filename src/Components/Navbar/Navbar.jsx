@@ -84,7 +84,7 @@ const Navbar = () => {
       {!user && (
         <>
           <NavLink
-            to="/blogs"
+            to="/about-us"
             className={({ isActive }) =>
               isActive
                 ? "text-[#f0c14a] font-semibold underline"

@@ -54,7 +54,7 @@ const ProductDetails = () => {
                     Min-Order: {product?.minimumOrder}
                   </h3>
                   <h3 className="font-medium">
-                    Available Units: {product?.availableQuantity}
+                    Available-Units: {product?.availableQuantity}
                   </h3>
                 </div>
                 <div className="divider"></div>
@@ -70,13 +70,13 @@ const ProductDetails = () => {
                 {/* Button show conditionally for role */}
                 <div className="flex  justify-between items-center mt-4">
                   {role === "manager" || role === "Admin" ? (
-                    <button className="btn btn-primary font-medium text-lg text-black">
+                    <button className="flex w-full btn btn-primary font-medium text-lg text-black">
                       Edit Now
                     </button>
                   ) : (
                     <Link
                       to={`/order-product/${product?._id}`}
-                      className="btn btn-primary font-medium text-lg text-black"
+                      className="flex w-full btn btn-primary font-medium text-lg text-black"
                     >
                       Order Now
                     </Link>
