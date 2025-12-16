@@ -23,7 +23,7 @@ const Navbar = () => {
     LogoutUser()
       .then(() => {
         toast.success("Logout Successfully");
-        navigate("/auth/login");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -67,10 +67,36 @@ const Navbar = () => {
           Add-Product
         </NavLink>
       )}
-      {/* User check  */}
-      {user && (
+      {/* Admin profile  */}
+      {role == "Admin" && (
         <NavLink
-          to="/dashboard"
+          to="/dashboard/adminProfile"
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#f0c14a] font-semibold underline"
+              : "hover:text-[#eeb62a]"
+          }
+        >
+          Dashboard
+        </NavLink>
+      )}
+      {/* Manager profile  */}
+      {role == "manager" && (
+        <NavLink
+          to="/dashboard/managerProfile"
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#f0c14a] font-semibold underline"
+              : "hover:text-[#eeb62a]"
+          }
+        >
+          Dashboard
+        </NavLink>
+      )}
+      {/* Manager profile  */}
+      {role == "buyer" && (
+        <NavLink
+          to="/dashboard/buyerProfile"
           className={({ isActive }) =>
             isActive
               ? "text-[#f0c14a] font-semibold underline"
@@ -81,6 +107,7 @@ const Navbar = () => {
         </NavLink>
       )}
 
+      {/* No user navbar */}
       {!user && (
         <>
           <NavLink

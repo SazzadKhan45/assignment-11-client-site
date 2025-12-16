@@ -6,13 +6,13 @@ import DashBoardComponents from "../../Components/DashBoardComponents/DashBoardC
 import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { CgLogOut } from "react-icons/cg";
-// import useUserRole from "../../Hooks/useUserRole";
+import useUserRole from "../../Hooks/useUserRole";
 
 const DashBoard = () => {
   // Custom hooks
   const { isDark, toggleTheme } = useTheme();
   const { user, LogoutUser } = useAuth();
-  // const { role } = useUserRole();
+  const { role } = useUserRole();
   // Navigate hook
   const navigate = useNavigate();
 
@@ -59,7 +59,18 @@ const DashBoard = () => {
             </label>
 
             <div>
-              <h2 className="text-center">DashBoard</h2>
+              {/* Admin dashboard */}
+              {role == "Admin" && (
+                <h2 className="text-xl font-medium ml-4">Admin Dashboard</h2>
+              )}
+              {/* Manager dashboard */}
+              {role == "manager" && (
+                <h2 className="text-xl font-medium ml-4">Manager Dashboard</h2>
+              )}
+              {/* Buyer dashboard */}
+              {role == "buyer" && (
+                <h2 className="text-xl font-medium ml-4">Buyer Dashboard</h2>
+              )}
             </div>
             {/* User Profile */}
             <div className="px-4 ml-auto">

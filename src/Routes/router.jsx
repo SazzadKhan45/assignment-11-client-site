@@ -17,6 +17,9 @@ import OrderPage from "../Components/OrderPage/OrderPage";
 import AdminOrderPage from "../Components/DashBoardComponents/AdminOrderPage";
 import ManagerOrder from "../Components/DashBoardComponents/ManagerOrder";
 import BuyerOrderPage from "./../Components/DashBoardComponents/BuyerOrderPage";
+import AdminProfile from "../Components/DashBoardComponents/AdminProfile";
+import ManagerProfile from "../Components/DashBoardComponents/ManagerProfile";
+import BuyerProfile from "../Components/DashBoardComponents/BuyerProfile";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +91,18 @@ const router = createBrowserRouter([
     ),
     errorElement: <h2>Something went wrong!</h2>,
     children: [
+      {
+        path: "adminProfile",
+        Component: AdminProfile,
+      },
+      {
+        path: "managerProfile",
+        Component: ManagerProfile,
+      },
+      {
+        path: "buyerProfile",
+        Component: BuyerProfile,
+      },
       {
         path: "all-products",
         Component: AllProductsTable,

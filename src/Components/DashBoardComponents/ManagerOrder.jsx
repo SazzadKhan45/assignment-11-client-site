@@ -8,7 +8,6 @@ import { LuView } from "react-icons/lu";
 import { TbPlayerEjectFilled } from "react-icons/tb";
 
 const ManagerOrder = () => {
-  //
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
@@ -22,16 +21,11 @@ const ManagerOrder = () => {
       const res = await axiosSecure.get(
         `/all-order-manager?email=${user?.email}`
       );
-      return res.data.data;
+      return Array.isArray(res.data.data) ? res.data.data : [];
     },
   });
 
-  // console.log(products);
-
-  // handle order approved
   const handleOrderApprove = async (id) => {
-    console.log(id);
-
     Swal.fire({
       title: "Are you sure?",
       text: "Accept This Order",
@@ -42,9 +36,7 @@ const ManagerOrder = () => {
       confirmButtonText: "Yes, Confirm",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        // DELETE only after confirmation
         await axiosSecure.patch(`/order-approve/${id}`);
-
         Swal.fire({
           title: "Confirm Order",
           text: "Your Order has been Accepted",
@@ -55,10 +47,7 @@ const ManagerOrder = () => {
     });
   };
 
-  // Handle order rejected function
   const handleOrderReject = async (id) => {
-    console.log(id);
-
     Swal.fire({
       title: "Are you sure?",
       text: "Reject This Order",
@@ -69,9 +58,7 @@ const ManagerOrder = () => {
       confirmButtonText: "Yes, Confirm",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        // DELETE only after confirmation
         await axiosSecure.patch(`/order-reject/${id}`);
-
         Swal.fire({
           title: "Rejected Confirm",
           text: "Your Order has been rejected",
@@ -82,7 +69,6 @@ const ManagerOrder = () => {
     });
   };
 
-  // handle edit product
   const handleEditProduct = () => {
     Swal.fire({
       title: "Edit Product Successfully",
@@ -90,8 +76,6 @@ const ManagerOrder = () => {
       draggable: true,
     });
   };
-
-  //
 
   return (
     <div>
@@ -114,11 +98,12 @@ const ManagerOrder = () => {
           <tbody>
             {isPending ? (
               <tr>
-                <td colSpan={4}>
+                <td colSpan={5}>
                   <Loading />
                 </td>
               </tr>
             ) : (
+              Array.isArray(products) &&
               products.map((p, index) => (
                 <tr key={p._id}>
                   <th>{index + 1}</th>
@@ -127,7 +112,7 @@ const ManagerOrder = () => {
                     <p>{p?.buyerEmail}</p>
                   </td>
                   <td>
-                    <h2 className="">
+                    <h2>
                       Id: <span className="font-medium">{p?.trackingId}</span>
                     </h2>
                   </td>
@@ -137,7 +122,7 @@ const ManagerOrder = () => {
                       Order:
                       <span
                         className={`font-medium ${
-                          p?.orderStatus == "approved"
+                          p?.orderStatus === "approved"
                             ? "text-green-600"
                             : "text-red-500"
                         }`}
@@ -155,15 +140,13 @@ const ManagerOrder = () => {
                     >
                       <LuView />
                     </button>
-                    {/* Order Accept */}
                     <button
                       onClick={() => handleOrderReject(p?._id)}
-                      className="btn btn-sm mr-2  tooltip"
+                      className="btn btn-sm mr-2 tooltip"
                       data-tip="Reject Order"
                     >
                       <TbPlayerEjectFilled />
                     </button>
-                    {/* Approved Order */}
                     <button
                       onClick={() => handleOrderApprove(p?._id)}
                       className="btn btn-sm tooltip"

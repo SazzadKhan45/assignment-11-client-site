@@ -24,8 +24,6 @@ const AdminOrderPage = () => {
     },
   });
 
-  console.log(products);
-
   // handle product delete
   const handleProductDelete = async (id) => {
     console.log(id);

@@ -2,6 +2,7 @@ import { AiFillProduct } from "react-icons/ai";
 import { FaCartPlus, FaUserFriends } from "react-icons/fa";
 import { Link, NavLink } from "react-router";
 import useUserRole from "./../../Hooks/useUserRole";
+import { CgProfile } from "react-icons/cg";
 
 const DashBoardComponents = () => {
   // Custom hooks
@@ -40,6 +41,20 @@ const DashBoardComponents = () => {
       {/* User List */}
       {role === "Admin" && (
         <>
+          <li className="border-b-2 border-primary text-[15px]">
+            <NavLink
+              to="/dashboard/adminProfile"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              }
+              data-tip="Admin Profile"
+            >
+              <CgProfile size={20} />
+              <span className="is-drawer-close:hidden">Admin Profile</span>
+            </NavLink>
+          </li>
           <li className="border-b-2 border-primary text-[15px]">
             <NavLink
               to="/dashboard/user-collections"
@@ -92,6 +107,20 @@ const DashBoardComponents = () => {
         <>
           <li className="border-b-2 border-primary text-[15px]">
             <NavLink
+              to="/dashboard/managerProfile"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              }
+              data-tip="Manager Profile"
+            >
+              <CgProfile size={20} />
+              <span className="is-drawer-close:hidden">Manager Profile</span>
+            </NavLink>
+          </li>
+          <li className="border-b-2 border-primary text-[15px]">
+            <NavLink
               to="/dashboard/manager-products"
               className={({ isActive }) =>
                 isActive
@@ -123,20 +152,37 @@ const DashBoardComponents = () => {
 
       {/* All Products List */}
       {role === "buyer" && (
-        <li className="border-b-2 border-primary text-[15px]">
-          <NavLink
-            to="/dashboard/buyer-order"
-            className={({ isActive }) =>
-              isActive
-                ? "text-[#f0c14a] font-semibold underline"
-                : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
-            }
-            data-tip="My Orders"
-          >
-            <FaCartPlus size={20} />
-            <span className="is-drawer-close:hidden">My Orders</span>
-          </NavLink>
-        </li>
+        <div>
+          <li className="border-b-2 border-primary text-[15px]">
+            <NavLink
+              to="/dashboard/buyerProfile"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              }
+              data-tip="Buyer Profile"
+            >
+              <CgProfile size={20} />
+              <span className="is-drawer-close:hidden">Buyer Profile</span>
+            </NavLink>
+          </li>
+          {/*  */}
+          <li className="border-b-2 border-primary text-[15px]">
+            <NavLink
+              to="/dashboard/buyer-order"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#7e5a01] is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              }
+              data-tip="My Orders"
+            >
+              <FaCartPlus size={20} />
+              <span className="is-drawer-close:hidden">My Orders</span>
+            </NavLink>
+          </li>
+        </div>
       )}
     </div>
   );

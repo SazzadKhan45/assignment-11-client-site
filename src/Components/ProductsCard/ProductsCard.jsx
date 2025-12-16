@@ -54,7 +54,7 @@ const ProductsCard = ({ product }) => {
             <div className="flex text-center">
               <Link
                 to="/auth/register"
-                className="bg-primary py-2 rounded-2xl "
+                className="bg-primary py-2 rounded-2xl w-full"
               >
                 View Details
               </Link>

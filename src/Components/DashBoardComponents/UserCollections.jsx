@@ -23,7 +23,7 @@ const UserCollections = () => {
       return res.data;
     },
   });
-  console.log(users);
+  // console.log(users);
 
   //
   const filteredUsers = users.filter(

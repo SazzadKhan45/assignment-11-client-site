@@ -25,7 +25,7 @@ const BuyerOrderPage = () => {
     enabled: !!user?.email,
   });
 
-  console.log(products);
+  // console.log(products);
 
   // handle order approved
   const handleOrderApprove = async (id) => {
@@ -119,7 +119,8 @@ const BuyerOrderPage = () => {
                   <td>
                     {/* Cancel Order */}
                     {p?.orderStatus == "approved" ||
-                    p?.orderStatus == "cancel" ? (
+                    p?.orderStatus == "cancel" ||
+                    p?.orderStatus == "rejected" ? (
                       <button
                         onClick={() => handleOrderApprove(p?._id)}
                         className="btn btn-sm tooltip"
