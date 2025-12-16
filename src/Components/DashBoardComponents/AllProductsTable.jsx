@@ -52,16 +52,33 @@ const AllProductsTable = () => {
   };
 
   // handle edit product
-  const handleEditProduct = () => {
+  const handleUpdateCreateAt = async (id) => {
+    console.log(id);
+
     Swal.fire({
-      title: "Edit Product Successfully",
-      icon: "success",
-      draggable: true,
+      title: "Are you sure?",
+      text: "Add To Homepage",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Confirm",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        // DELETE only after confirmation
+        await axiosSecure.patch(`/product/${id}`);
+
+        Swal.fire({
+          title: "Successfully",
+          text: "Your file has been Added Home.",
+          icon: "success",
+        });
+        refetch();
+      }
     });
   };
 
-  //
-
+  // Ui Code start Here
   return (
     <div>
       <div className="overflow-x-auto">
@@ -107,9 +124,9 @@ const AllProductsTable = () => {
                   </td>
                   <td>
                     <button
-                      onClick={() => handleEditProduct(p?._id)}
+                      onClick={() => handleUpdateCreateAt(p?._id)}
                       className="btn btn-sm mr-2 bg-primary tooltip"
-                      data-tip="Edit"
+                      data-tip="Add Homepage"
                     >
                       <FaEdit />
                     </button>

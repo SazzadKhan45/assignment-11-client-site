@@ -29,10 +29,10 @@ const ProductsCard = ({ product }) => {
         <div className="card-body">
           <h2 className="card-title">{productName}</h2>
           <p className="text-justify text-gray-500">{description}</p>
-          <div className="flex items-center text-[15px]">
-            <p className="">
-              <span className="underline">Available: </span>
-              <span className="font-medium">{availableQuantity} </span>Units
+          <div className="flex items-center text-[16px]">
+            <p>
+              <span className="underline">Available:</span>
+              <span className="font-medium"> {availableQuantity} </span>Units
             </p>
             <p className="badge badge-outline">{category}</p>
           </div>
