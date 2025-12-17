@@ -70,6 +70,7 @@ const OrderPage = () => {
       paymentOptions: data.payment,
       Quantity: data.orderUnit,
       contact: data.contactNumber,
+      productId: product._id,
     };
 
     console.log(orderInfo);
@@ -88,7 +89,7 @@ const OrderPage = () => {
         //
         await axiosSecure.post("/buyer-order", orderInfo);
         Swal.fire({
-          title: "Place Order",
+          title: "Place New Order",
           text: "Please Check Dashboard Oder Status",
           icon: "success",
         });
@@ -96,9 +97,34 @@ const OrderPage = () => {
         navigate("/all-products");
       }
     });
+  };
+
+  // Online Payments function
+  const handleOnlinePayment = async (data) => {
+    //
+    const totalAmount = product.price * data.orderUnit;
+    // Online paymentInfo
+    const paymentInfo = {
+      cost: totalAmount,
+      buyerEmail: user.email,
+      productId: product._id,
+      productName: product.productName,
+      images: product.media.images[0],
+      Quantity: data.orderUnit,
+      contact: data.contactNumber,
+      supplierEmail: product.supplierEmail,
+      paymentOptions: data.payment,
+      category: product.category,
+      name: user?.displayName,
+    };
 
     //
+    const res = await axiosSecure.post("/payment-checkout", paymentInfo);
+    //
+    window.open(res.data.url);
   };
+
+  //
 
   return (
     <div className={`py-12 ${isDark ? "" : "bg-[#FFFBEB]"}`}>
@@ -266,12 +292,22 @@ const OrderPage = () => {
                 <span className="font-bold text-secondary">{totalAmount}</span>
               </h2>
 
-              <button
-                type="submit"
-                className="bg-secondary text-white px-10 py-2 rounded cursor-pointer"
-              >
-                Place Your Order
-              </button>
+              {paymentMethodSelect == "Online Payment" ? (
+                <button
+                  type="button"
+                  onClick={handleSubmit(handleOnlinePayment)}
+                  className="bg-secondary text-white px-10 py-2 rounded cursor-pointer"
+                >
+                  Place Your Order
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="bg-secondary text-white px-10 py-2 rounded cursor-pointer"
+                >
+                  Place Your Order
+                </button>
+              )}
             </div>
           </form>
         </div>
@@ -279,5 +315,4 @@ const OrderPage = () => {
     </div>
   );
 };
-
 export default OrderPage;

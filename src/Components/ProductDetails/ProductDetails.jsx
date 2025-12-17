@@ -23,7 +23,7 @@ const ProductDetails = () => {
     },
   });
 
-  console.log(product);
+  // console.log(product);
 
   return (
     <div className="my-16 px-2 md:px-0">
@@ -38,7 +38,6 @@ const ProductDetails = () => {
                 <img
                   className="h-auto md:h-[350px] lg:h-[450px] object-cover rounded"
                   src={product?.media.images[0]}
-                  alt=""
                 />
               </div>
 

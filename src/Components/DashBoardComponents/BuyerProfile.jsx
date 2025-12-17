@@ -101,7 +101,7 @@ const BuyerProfile = () => {
                 <div>
                   <h2 className="text-secondary text-2xl font-medium text-center py-4">
                     <span className="inline-block border-b-2 border-primary">
-                      Buyer All Products Info Data
+                      Buyer All Orders Info Data
                     </span>
                   </h2>
                   <div className="flex gap-6 py-10">

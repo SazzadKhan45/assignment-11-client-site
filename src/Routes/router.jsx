@@ -20,6 +20,8 @@ import BuyerOrderPage from "./../Components/DashBoardComponents/BuyerOrderPage";
 import AdminProfile from "../Components/DashBoardComponents/AdminProfile";
 import ManagerProfile from "../Components/DashBoardComponents/ManagerProfile";
 import BuyerProfile from "../Components/DashBoardComponents/BuyerProfile";
+import OnlinePayment from "../Components/OnlinePayment/OnlinePayment";
+import CancelPayment from "../Components/CancelPayment/CancelPayment";
 
 const router = createBrowserRouter([
   {
@@ -126,6 +128,14 @@ const router = createBrowserRouter([
       {
         path: "manager-order",
         Component: ManagerOrder,
+      },
+      {
+        path: "payment-success",
+        Component: OnlinePayment,
+      },
+      {
+        path: "payment-cancel",
+        Component: CancelPayment,
       },
     ],
   },
