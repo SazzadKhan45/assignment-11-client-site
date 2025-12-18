@@ -26,6 +26,7 @@ About : G-Flow is a modern garment marketplace that connects buyers with garment
     5. React-router: 7.10.1
     5. React-hook-form: 7.68.0
     6. axios: 1.13.2
+    7. Vite .env
 
 # Use Npm package :-
 
