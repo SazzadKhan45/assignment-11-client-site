@@ -3,9 +3,10 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
-import { FcAcceptDatabase } from "react-icons/fc";
+import { GrCompliance } from "react-icons/gr";
 import { LuView } from "react-icons/lu";
 import { TbPlayerEjectFilled } from "react-icons/tb";
+import { SiTicktick } from "react-icons/si";
 
 const ManagerOrder = () => {
   const { user } = useAuth();
@@ -47,6 +48,29 @@ const ManagerOrder = () => {
     });
   };
 
+  // Order Complete function
+  const handleOrderCompleted = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Delivered This Order",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Confirm",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axiosSecure.patch(`/order-completed/${id}`);
+        Swal.fire({
+          title: "Confirm Order",
+          text: "Your Order has been Accepted",
+          icon: "success",
+        });
+        refetch();
+      }
+    });
+  };
+
   const handleOrderReject = async (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -69,13 +93,7 @@ const ManagerOrder = () => {
     });
   };
 
-  const handleEditProduct = () => {
-    Swal.fire({
-      title: "Edit Product Successfully",
-      icon: "success",
-      draggable: true,
-    });
-  };
+  //
 
   return (
     <div>
@@ -122,7 +140,8 @@ const ManagerOrder = () => {
                       Order:
                       <span
                         className={`font-medium ${
-                          p?.orderStatus === "approved"
+                          p?.orderStatus === "approved" ||
+                          p?.orderStatus === "completed"
                             ? "text-green-600"
                             : "text-red-500"
                         }`}
@@ -134,25 +153,27 @@ const ManagerOrder = () => {
                   </td>
                   <td>
                     <button
-                      onClick={() => handleEditProduct(p?._id)}
-                      className="btn btn-sm mr-2 tooltip"
-                      data-tip="Order Views"
+                      onClick={() => handleOrderApprove(p?._id)}
+                      className="btn btn-sm tooltip btn-primary text-green-600"
+                      data-tip="Accept Order"
                     >
-                      <LuView />
+                      <SiTicktick />
                     </button>
+                    {/* Order complete */}
+                    <button
+                      onClick={() => handleOrderCompleted(p?._id)}
+                      className="btn bg-secondary text-white btn-sm mx-2 tooltip"
+                      data-tip="Order Completed"
+                    >
+                      <GrCompliance />
+                    </button>
+                    {/* Reject Order */}
                     <button
                       onClick={() => handleOrderReject(p?._id)}
-                      className="btn btn-sm mr-2 tooltip"
+                      className="btn btn-sm tooltip text-red-700"
                       data-tip="Reject Order"
                     >
                       <TbPlayerEjectFilled />
-                    </button>
-                    <button
-                      onClick={() => handleOrderApprove(p?._id)}
-                      className="btn btn-sm tooltip"
-                      data-tip="Accept Order"
-                    >
-                      <FcAcceptDatabase />
                     </button>
                   </td>
                 </tr>

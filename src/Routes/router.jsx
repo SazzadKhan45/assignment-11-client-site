@@ -22,6 +22,8 @@ import ManagerProfile from "../Components/DashBoardComponents/ManagerProfile";
 import BuyerProfile from "../Components/DashBoardComponents/BuyerProfile";
 import OnlinePayment from "../Components/OnlinePayment/OnlinePayment";
 import CancelPayment from "../Components/CancelPayment/CancelPayment";
+import AboutUs from "../Components/AboutUs/AboutUs";
+import ContactUs from "../Components/ContactUs/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -39,11 +41,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: <h2>Hello world</h2>,
+        Component: AboutUs,
       },
       {
-        path: "/contact",
-        element: <h2>Hello world</h2>,
+        path: "/contact-us",
+        Component: ContactUs,
       },
       {
         path: "/add-product",

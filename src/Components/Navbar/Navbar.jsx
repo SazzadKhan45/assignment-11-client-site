@@ -122,14 +122,14 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/contact"
+            to="/contact-us"
             className={({ isActive }) =>
               isActive
                 ? "text-[#f0c14a] font-semibold underline"
                 : "hover:text-[#eeb62a]"
             }
           >
-            Contact
+            Contact Us
           </NavLink>
         </>
       )}

@@ -3,7 +3,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import Loading from "../Loading/Loading";
-import { MdCancel } from "react-icons/md";
+import { MdCancel, MdTrackChanges } from "react-icons/md";
 
 const BuyerOrderPage = () => {
   //
@@ -117,6 +117,13 @@ const BuyerOrderPage = () => {
                     <h2 className="font-medium">Units: {p?.Quantity}</h2>
                   </td>
                   <td>
+                    <button
+                      onClick={() => handleOrderApprove(p?._id)}
+                      className="btn btn-sm tooltip mr-2"
+                      data-tip="Tracking Order"
+                    >
+                      <MdTrackChanges />
+                    </button>
                     {/* Cancel Order */}
                     {p?.orderStatus == "approved" ||
                     p?.orderStatus == "cancel" ||
