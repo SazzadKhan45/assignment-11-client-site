@@ -36,4 +36,12 @@ About : G-Flow is a modern garment marketplace that connects buyers with garment
     4. swiper: 12.0.3
     5. aos: 2.3.4
     6. react-toastify: 11.0.5
-    7. react-icons: ^5.5.0
+    7. react-icons: 5.5.0
+
+# User Role Account Info
+
+    admin email : sazzadkhan111@gmail.com,
+    Manager email : sazzadkhan222@gmail.com
+    Buyer email : sazzadkhan333@gmail.com
+
+    All User password : Abcd12345

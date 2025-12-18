@@ -1,29 +1,11 @@
 [
   {
-    "_id": "69364724636bbd4dde0fe542",
-    "name": "Sazzad Khan",
-    "email": "sazzadkhan753@gmail.com",
-    "photo": "https://lh3.googleusercontent.com/a/ACg8ocKR7GPp6ZCe63ffyTGv9mKr62GETaoNUfXHXTw8Cr3J0W-yG3ji=s96-c",
+    "_id": "6943f95ce1f88f7e4bceba51",
+    "name": "Admin",
+    "email": "sazzadkhan111@gmail.com",
     "role": "Admin",
+    "photo": "https://i.ibb.co/fVhYgjG2/man-7796384-640.jpg",
     "status": "approved",
-    "createdAt": "2025-12-08T03:33:56.235Z"
-  },
-  {
-    "_id": "69365a5565885592640ea3be",
-    "name": "Safa Khan",
-    "email": "sazzadkhan75@gmail.com",
-    "role": "buyer",
-    "photo": "https://i.ibb.co/XfWNr1bH/Safa-khan.jpg",
-    "status": "pending",
-    "createdAt": "2025-12-08T04:55:49.814Z"
-  },
-  {
-    "_id": "69365c5f3fa68d9c7d7f99af",
-    "name": "Sazzad Khan",
-    "email": "sazzadkhan752@gmail.com",
-    "photo": "https://lh3.googleusercontent.com/a/ACg8ocIlTgJqVEZRUTwJk4WZqjKSELPIx-47jNh4HptDVPT_U3XqFRWV=s96-c",
-    "role": "manager",
-    "status": "approved",
-    "createdAt": "2025-12-08T05:04:31.258Z"
+    "createdAt": "2025-12-18T12:53:48.086+00:00"
   }
 ]
