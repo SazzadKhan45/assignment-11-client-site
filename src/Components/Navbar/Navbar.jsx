@@ -8,6 +8,8 @@ import { CgLogOut } from "react-icons/cg";
 import { toast } from "react-toastify";
 import LogoImg from "../../assets/Logo.png";
 import useUserRole from "../../Hooks/useUserRole";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Navbar = () => {
   //
@@ -15,8 +17,20 @@ const Navbar = () => {
   //
   const { user, loading, LogoutUser } = useAuth();
   const { role } = useUserRole();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   // console.log(user);
+
+  // Manager info
+  const { data: managerInfo } = useQuery({
+    queryKey: ["manager-info", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/manager-info?email=${user?.email}`);
+      return res.data.data;
+    },
+    enabled: !!user?.email,
+  });
+  // console.log(managerInfo);
 
   // handle logOut user
   const handleLogoutUser = () => {
@@ -55,7 +69,7 @@ const Navbar = () => {
         All-Products
       </NavLink>
       {/* Check User role Admin or manager */}
-      {(role == "Admin" || role == "manager") && (
+      {role == "Admin" && (
         <NavLink
           to="/add-product"
           className={({ isActive }) =>
@@ -67,6 +81,49 @@ const Navbar = () => {
           Add-Product
         </NavLink>
       )}
+
+      {/* Check manager account suspend */}
+      {role === "manager" && (
+        <>
+          {managerInfo?.status === "pending" && (
+            <NavLink
+              to="/dashboard/pending"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#eeb62a]"
+              }
+            >
+              Add-Product
+            </NavLink>
+          )}
+          {managerInfo?.status === "suspend" && (
+            <NavLink
+              to="/dashboard/suspend"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#eeb62a]"
+              }
+            >
+              Add-Product
+            </NavLink>
+          )}
+          {managerInfo?.status === "approved" && (
+            <NavLink
+              to="/add-product"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#f0c14a] font-semibold underline"
+                  : "hover:text-[#eeb62a]"
+              }
+            >
+              Add-Product
+            </NavLink>
+          )}
+        </>
+      )}
+
       {/* Admin profile  */}
       {role == "Admin" && (
         <NavLink
@@ -80,6 +137,7 @@ const Navbar = () => {
           Dashboard
         </NavLink>
       )}
+
       {/* Manager profile  */}
       {role == "manager" && (
         <NavLink

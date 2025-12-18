@@ -22,7 +22,7 @@ const ProductsCard = ({ product }) => {
         <figure className="p-4">
           <img
             className="w-full h-[200px] md:h-[250px] lg:h-[300px] rounded border"
-            src={media.images[0]}
+            src={media?.images[0]}
             alt=""
           />
         </figure>

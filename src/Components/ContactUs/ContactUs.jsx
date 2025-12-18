@@ -56,11 +56,12 @@ const ContactUs = () => {
                 <h2 className="text-3xl font-bold text-gray-800">Contact Us</h2>
 
                 {/* Name */}
+                <label className="">Your Name</label>
                 <input
                   type="text"
                   {...register("userName", { required: "Name is required" })}
                   placeholder="Your Name"
-                  className="w-full rounded-lg border px-4 py-2"
+                  className="w-full rounded-lg border px-4 py-2 mt-2"
                 />
                 {errors.userName && (
                   <p className="text-sm text-red-500">
@@ -69,24 +70,26 @@ const ContactUs = () => {
                 )}
 
                 {/* Email */}
+                <label className="">Your Email</label>
                 <input
                   type="email"
                   {...register("email", { required: "Email is required" })}
                   placeholder="Email Address"
-                  className="w-full rounded-lg border px-4 py-2"
+                  className="w-full rounded-lg border px-4 py-2 mt-2"
                 />
                 {errors.email && (
                   <p className="text-sm text-red-500">{errors.email.message}</p>
                 )}
 
-                {/* Phone */}
+                {/* Subject*/}
+                <label className="">Subject</label>
                 <input
-                  type="tel"
+                  type="text"
                   {...register("subject", {
                     required: "Subject is required",
                   })}
                   placeholder="Enter Subject"
-                  className="w-full rounded-lg border px-4 py-2"
+                  className="w-full rounded-lg border px-4 py-2 mt-2"
                 />
                 {errors.subject && (
                   <p className="text-sm text-red-500">
@@ -95,11 +98,12 @@ const ContactUs = () => {
                 )}
 
                 {/* Message */}
+                <label className="">Your Message</label>
                 <textarea
                   rows="4"
                   {...register("message", { required: "Message is required" })}
                   placeholder="Your Message"
-                  className="w-full rounded-lg border px-4 py-2"
+                  className="w-full rounded-lg border px-4 py-2 mt-2"
                 />
                 {errors.message && (
                   <p className="text-sm text-red-500">

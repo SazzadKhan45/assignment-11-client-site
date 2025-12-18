@@ -24,6 +24,8 @@ import OnlinePayment from "../Components/OnlinePayment/OnlinePayment";
 import CancelPayment from "../Components/CancelPayment/CancelPayment";
 import AboutUs from "../Components/AboutUs/AboutUs";
 import ContactUs from "../Components/ContactUs/ContactUs";
+import ManagerStatusPending from "../Components/DashBoardComponents/ManagerStatusPending";
+import ManagerSuspend from "../Components/DashBoardComponents/ManagerSuspend";
 
 const router = createBrowserRouter([
   {
@@ -138,6 +140,14 @@ const router = createBrowserRouter([
       {
         path: "payment-cancel",
         Component: CancelPayment,
+      },
+      {
+        path: "pending",
+        Component: ManagerStatusPending,
+      },
+      {
+        path: "suspend",
+        Component: ManagerSuspend,
       },
     ],
   },

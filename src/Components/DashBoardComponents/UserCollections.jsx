@@ -59,7 +59,7 @@ const UserCollections = () => {
   };
 
   // User handleStatus
-  const handleStatusChange = async (id) => {
+  const handleStatusApproved = async (id) => {
     //
     Swal.fire({
       title: "Are you sure?",
@@ -76,6 +76,31 @@ const UserCollections = () => {
         //
         Swal.fire({
           title: "Approved",
+          text: "Successfully !!",
+          icon: "success",
+        });
+        refetch();
+      }
+    });
+  };
+
+  const handleStatusSuspend = async (id) => {
+    //
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Suspend This User",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Suspend",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        //
+        await axiosSecure.patch(`/user-suspend/${id}`);
+        //
+        Swal.fire({
+          title: "Suspended",
           text: "Successfully !!",
           icon: "success",
         });
@@ -150,7 +175,7 @@ const UserCollections = () => {
                 <h2 className="font-medium">{user?.role}</h2>
                 <p
                   className={`${
-                    user?.status == "pending"
+                    user?.status == "pending" || user?.status == "suspend"
                       ? "text-red-500"
                       : "text-green-500"
                   }`}
@@ -170,7 +195,7 @@ const UserCollections = () => {
                 ) : (
                   //
                   <button
-                    onClick={() => handleStatusChange(user?._id)}
+                    onClick={() => handleStatusApproved(user?._id)}
                     className="btn btn-sm tooltip"
                     data-tip="Approve"
                   >
@@ -178,7 +203,11 @@ const UserCollections = () => {
                   </button>
                 )}
                 {/*  user */}
-                <button className="btn btn-sm tooltip mx-2" data-tip="Suspends">
+                <button
+                  onClick={() => handleStatusSuspend(user?._id)}
+                  className="btn btn-sm tooltip mx-2 text-red-600"
+                  data-tip="Suspends"
+                >
                   <TbPlayerEjectFilled />
                 </button>
                 {/* Remove user */}

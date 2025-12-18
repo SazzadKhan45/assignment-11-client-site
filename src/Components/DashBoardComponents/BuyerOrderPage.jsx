@@ -4,9 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import Loading from "../Loading/Loading";
 import { MdCancel, MdTrackChanges } from "react-icons/md";
+import { useState } from "react";
 
 const BuyerOrderPage = () => {
-  //
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
@@ -25,59 +27,45 @@ const BuyerOrderPage = () => {
     enabled: !!user?.email,
   });
 
-  // console.log(products);
-
-  // handle order approved
+  // Cancel order
   const handleOrderApprove = async (id) => {
-    console.log(id);
-
     Swal.fire({
       title: "Are you sure?",
-      text: "Cancel Your Order",
+      text: "Cancel your order?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
       confirmButtonText: "Yes, Cancel",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        // DELETE only after confirmation
         await axiosSecure.patch(`/order-cancel/${id}`);
-
-        Swal.fire({
-          title: "Successfully Cancel",
-          text: "",
-          icon: "success",
-        });
+        Swal.fire("Cancelled!", "Order has been cancelled.", "success");
         refetch();
       }
     });
   };
 
-  //
-
   return (
     <div>
       <div className="overflow-x-auto">
         <div className="bg-primary py-2 mb-4">
-          <h2 className="text-xl font-medium text-center">
-            My Order List Table
-          </h2>
+          <h2 className="text-xl font-medium text-center">My Order List</h2>
         </div>
+
         <table className="table">
           <thead>
             <tr>
               <th>#</th>
-              <th>BuyerInfo</th>
-              <th>Order Id</th>
+              <th>Product Info</th>
+              <th>Order ID</th>
               <th>Quantity & Status</th>
               <th>Actions</th>
             </tr>
           </thead>
+
           <tbody>
             {isPending ? (
               <tr>
-                <td colSpan={4}>
+                <td colSpan={5}>
                   <Loading />
                 </td>
               </tr>
@@ -85,10 +73,11 @@ const BuyerOrderPage = () => {
               products.map((p, index) => (
                 <tr key={p._id}>
                   <th>{index + 1}</th>
+
                   <td className="flex items-center gap-2">
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
-                        <img src={p?.images} />
+                        <img src={p?.images} alt={p?.productName} />
                       </div>
                     </div>
                     <div>
@@ -97,43 +86,42 @@ const BuyerOrderPage = () => {
                       <p className="font-medium">{p?.paymentOptions}</p>
                     </div>
                   </td>
-                  <td className="font-medium">
-                    <h2 className="">Id: {p?.trackingId}</h2>
-                  </td>
+
+                  <td className="font-medium">{p?.trackingId || "N/A"}</td>
+
                   <td>
                     <p>
                       Order:
                       <span
-                        className={`font-medium ${
-                          p?.orderStatus == "approved"
+                        className={`font-medium ml-1 ${
+                          p?.orderStatus === "approved" ||
+                          p?.orderStatus === "completed"
                             ? "text-green-600"
                             : "text-red-500"
                         }`}
                       >
-                        {" "}
                         {p?.orderStatus}
                       </span>
                     </p>
-                    <h2 className="font-medium">Units: {p?.Quantity}</h2>
+                    <p className="font-medium">Units: {p?.Quantity}</p>
                   </td>
+
                   <td>
                     <button
-                      onClick={() => handleOrderApprove(p?._id)}
+                      onClick={() => {
+                        setSelectedOrder(p);
+                        document.getElementById("my_modal_5").showModal();
+                      }}
                       className="btn btn-sm tooltip mr-2"
                       data-tip="Tracking Order"
                     >
                       <MdTrackChanges />
                     </button>
-                    {/* Cancel Order */}
-                    {p?.orderStatus == "approved" ||
-                    p?.orderStatus == "cancel" ||
-                    p?.orderStatus == "rejected" ? (
-                      <button
-                        onClick={() => handleOrderApprove(p?._id)}
-                        className="btn btn-sm tooltip"
-                        data-tip="Cancel Order"
-                        disabled
-                      >
+
+                    {p?.orderStatus === "approved" ||
+                    p?.orderStatus === "cancel" ||
+                    p?.orderStatus === "rejected" ? (
+                      <button disabled className="btn btn-sm">
                         <MdCancel />
                       </button>
                     ) : (
@@ -152,6 +140,57 @@ const BuyerOrderPage = () => {
           </tbody>
         </table>
       </div>
+
+      {/* ✅ SINGLE MODAL — OUTSIDE TABLE */}
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">📦 Order Tracking</h3>
+
+          {selectedOrder && (
+            <div className="py-4 space-y-2">
+              <p>
+                <strong>Product:</strong> {selectedOrder.productName}
+              </p>
+
+              <p>
+                <strong>Status:</strong>{" "}
+                <span className="badge badge-info">
+                  {selectedOrder.orderStatus}
+                </span>
+              </p>
+
+              <p>
+                <strong>Tracking ID:</strong>{" "}
+                {selectedOrder.trackingId || "Not assigned yet"}
+              </p>
+
+              {selectedOrder.orderStatus === "pending" && (
+                <p className="text-warning">
+                  ⏳ Your order is being processed.
+                </p>
+              )}
+
+              {selectedOrder.orderStatus === "approved" && (
+                <p className="text-primary">
+                  🚚 Your order has been approved and will be shipped soon.
+                </p>
+              )}
+
+              {selectedOrder.orderStatus === "completed" && (
+                <p className="text-success">
+                  ✅ Your order has been delivered successfully.
+                </p>
+              )}
+            </div>
+          )}
+
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };
