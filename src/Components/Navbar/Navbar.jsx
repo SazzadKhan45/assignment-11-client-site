@@ -313,19 +313,14 @@ const Navbar = () => {
 
             {/* Toggle menu light & dark */}
             <div className="ml-2">
-              {isDark ? (
-                <div className="text-[#e7c06c] bg-gray-400 p-1 rounded-full cursor-pointer">
-                  <IoMdMoon size={20} onClick={toggleTheme} />
-                </div>
-              ) : (
-                <div className="cursor-pointer bg-white p-1 rounded-full">
-                  <IoMdSunny
-                    size={20}
-                    className="text-orange-400"
-                    onClick={toggleTheme}
-                  />
-                </div>
-              )}
+              <label className="flex cursor-pointer gap-2">
+                <input
+                  onClick={toggleTheme}
+                  type="checkbox"
+                  value="synthwave"
+                  className="toggle theme-controller"
+                />
+              </label>
             </div>
           </div>
         </div>
