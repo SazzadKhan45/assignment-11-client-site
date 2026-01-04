@@ -29,6 +29,7 @@ const ContactUs = () => {
 
   return (
     <section className=" py-14 px-4">
+      <title>Contact Us</title>
       <div className="mx-auto max-w-6xl rounded-2xl bg-primary p-8 shadow-lg">
         <div className="grid items-center gap-10 md:grid-cols-2">
           {/* LEFT LOTTIE */}

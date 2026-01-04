@@ -138,6 +138,7 @@ const Register = () => {
 
   return (
     <div className="bg-base-200 md:py-4">
+      <title>Register</title>
       <MyContainer>
         <div className="hero-content">
           <div className="card bg-base-100 w-full max-w-sm md:max-w-lg lg:max-w-2xl shrink-0 shadow-2xl md:px-6 lg:px-12">

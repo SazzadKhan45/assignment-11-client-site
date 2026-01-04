@@ -83,6 +83,7 @@ const Login = () => {
   //
   return (
     <div className="bg-base-200 md:py-12">
+      <title>Login</title>
       <MyContainer>
         <div className="hero-content">
           <div className="card bg-base-100 w-full max-w-sm md:max-w-lg lg:max-w-2xl shrink-0 shadow-2xl md:px-8 lg:px-12 md:py-4">

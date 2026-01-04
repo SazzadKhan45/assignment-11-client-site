@@ -5,6 +5,7 @@ const AboutUs = () => {
   return (
     <div>
       <MyContainer>
+        <title>About Us</title>
         <div className=" px-4 py-12">
           <div className="mx-auto max-w-6xl">
             {/* Header */}

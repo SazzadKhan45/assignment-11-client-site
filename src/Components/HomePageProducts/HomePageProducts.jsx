@@ -22,6 +22,7 @@ const HomePageProducts = () => {
 
   return (
     <div className="mt-12 px-2 md:px-0">
+      <title>Home</title>
       <MyContainer>
         <div>
           <h2 className="flex justify-center items-center gap-1 text-2xl md:text-4xl font-medium">

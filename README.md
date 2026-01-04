@@ -40,7 +40,7 @@ About : G-Flow is a modern garment marketplace that connects buyers with garment
 
 # User Role Account Info
 
-    admin email : sazzadkhan111@gmail.com,
+    admin email : sazzadkhan111@gmail.com
     Manager email : sazzadkhan222@gmail.com
     Buyer email : sazzadkhan333@gmail.com
 

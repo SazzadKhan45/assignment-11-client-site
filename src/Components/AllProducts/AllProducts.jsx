@@ -41,6 +41,7 @@ const AllProducts = () => {
 
   return (
     <div className={`py-12 ${isDark ? "bg-gray-900" : "bg-amber-50"}`}>
+      <title>All Products</title>
       <MyContainer>
         {/* Header Section */}
         <div className="md:flex justify-between items-center gap-16 px-4 md:px-0">

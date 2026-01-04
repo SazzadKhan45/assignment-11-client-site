@@ -97,6 +97,7 @@ const ManagerOrder = () => {
 
   return (
     <div>
+      <title>My Orders</title>
       <div className="overflow-x-auto">
         <div className="bg-primary py-2 mb-4">
           <h2 className="text-xl font-medium text-center">

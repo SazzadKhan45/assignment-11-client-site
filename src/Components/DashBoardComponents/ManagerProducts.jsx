@@ -74,6 +74,7 @@ const ManagerProducts = () => {
 
   return (
     <div>
+      <title>My Products</title>
       <div className="bg-primary py-2 mb-4">
         <h2 className="text-xl font-medium text-center">
           My Products List Table

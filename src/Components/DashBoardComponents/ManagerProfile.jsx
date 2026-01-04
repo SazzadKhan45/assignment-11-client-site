@@ -65,6 +65,7 @@ const ManagerProfile = () => {
 
   return (
     <div className="px-4">
+      <title>My Profile</title>
       <div className="px-4">
         {isPending ? (
           <div>
